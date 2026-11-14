@@ -1,0 +1,331 @@
+{
+  "_meta": {
+    "version": "0.3",
+    "ambito": "Medio Oeste de EE. UU. (piloto: centro de Iowa). No trasladar a otra region sin revisar reglas.",
+    "convenciones": {
+      "tipo": "citado = el valor aparece en la fuente; supuesto = decision de diseno sin respaldo directo, debe mostrarse como tal",
+      "dia_favorable": "dia en que una racha de horas favorables alcanza o mantiene la duracion minima",
+      "hora_favorable": "RH2M + ajuste_dosel >= umbral, temperatura dentro del criterio, mes dentro de la ventana"
+    },
+    "niveles_clima": {
+      "descripcion": "Fraccion media de dias favorables dentro de la ventana susceptible. Cortes arbitrarios, solo para ordenar.",
+      "tipo": "supuesto",
+      "baja_max": 0.1,
+      "media_max": 0.3
+    },
+    "marco": "Cada problema se describe por tres campos: donde sobrevive, que lo favorece y que lo interrumpe. El medio de supervivencia decide que puede hacer la rotacion.",
+    "medios": {
+      "suelo_anios": {
+        "nombre": "Suelo, por anios",
+        "que_lo_interrumpe": "Solo una rotacion larga sin hospedante; la labranza ayuda poco."
+      },
+      "residuo_superficie": {
+        "nombre": "Residuo del cultivo en superficie",
+        "que_lo_interrumpe": "Rotacion corta, o enterrar el residuo (a costa de proteccion del suelo)."
+      },
+      "suelo_un_cultivo": {
+        "nombre": "Suelo, ligado a un solo cultivo",
+        "que_lo_interrumpe": "Uno o mas anios sin ese cultivo."
+      },
+      "no_sobrevive_viento": {
+        "nombre": "No sobrevive en el lote; llega por viento",
+        "que_lo_interrumpe": "Nada dentro del lote: la rotacion no cambia este riesgo."
+      }
+    }
+  },
+  "patogenos": {
+    "moho_blanco_soya": {
+      "nombre": "Moho blanco",
+      "patogeno": "Sclerotinia sclerotiorum",
+      "hospedantes": [
+        "soya",
+        "girasol",
+        "canola",
+        "alfalfa",
+        "frijol"
+      ],
+      "persistencia_inoculo_anios": {
+        "min": 4,
+        "max": 8,
+        "tipo": "citado",
+        "fuente": "https://cropprotectionnetwork.org/publications/an-overview-of-white-mold",
+        "nota": "CPN: al menos 8 anios. Penn State recoge 4-5 anios segun experiencia de agricultores. Otras fuentes: hasta 10."
+      },
+      "rotacion_min_anios": {
+        "min": 2,
+        "max": 3,
+        "tipo": "citado",
+        "fuente": "https://cropprotectionnetwork.org/publications/an-overview-of-white-mold-archived"
+      },
+      "eficacia_rotacion": {
+        "valor": "parcial",
+        "tipo": "citado",
+        "fuente": "https://cropwatch.unl.edu/plant-disease/soybean/sclerotinia-stem-rot/",
+        "nota": "La rotacion reduce presion pero por si sola no evita la enfermedad."
+      },
+      "ventana": {
+        "meses": [
+          7
+        ],
+        "etapa": "R1-R3 (floracion)",
+        "tipo": "supuesto",
+        "nota": "La etapa R1-R3 esta citada (CPN). El mes de julio para Iowa es un supuesto: depende de fecha de siembra y grupo de madurez."
+      },
+      "clima": {
+        "temp": {
+          "criterio": "max_diaria",
+          "min": null,
+          "max": 29.4,
+          "tipo": "citado",
+          "fuente": "https://cropwatch.unl.edu/soybean-white-mold-management-season-here/",
+          "nota": "Temperaturas moderadas, menos de 85 F."
+        },
+        "horas_mojado_min": {
+          "valor": 12,
+          "tipo": "supuesto",
+          "nota": "Las fuentes de extension no dan un umbral de horas ni de HR. Proxy declarado; no usar como dato."
+        },
+        "hr_umbrales": [
+          85,
+          90,
+          95
+        ],
+        "hr_referencia": 90
+      },
+      "riesgos_externos": [],
+      "lagunas": [
+        "Sin umbral numerico de humedad en las fuentes: el nivel climatico de este patogeno es el menos fiable de los tres.",
+        "El inoculo se origina sobre todo dentro del lote: sin historial de moho blanco en el campo, el riesgo real puede ser mucho menor.",
+        "Cierre de dosel (surcos estrechos, alta poblacion) pesa mucho y el motor no lo ve."
+      ],
+      "tipo_problema": "hongo",
+      "medio_supervivencia": {
+        "clave": "suelo_anios",
+        "detalle": "Esclerocios en el suelo.",
+        "tipo": "citado",
+        "fuente": "https://cropprotectionnetwork.org/publications/an-overview-of-white-mold"
+      }
+    },
+    "mancha_gris_maiz": {
+      "nombre": "Mancha gris",
+      "patogeno": "Cercospora zeae-maydis",
+      "hospedantes": [
+        "maiz"
+      ],
+      "persistencia_inoculo_anios": {
+        "min": 1,
+        "max": 1,
+        "tipo": "citado",
+        "fuente": "https://typeset.io/pdf/gray-leaf-spot-of-corn-54wybiqd2o.pdf",
+        "nota": "Sobrevive alrededor de un anio en residuo superficial."
+      },
+      "rotacion_min_anios": {
+        "min": 1,
+        "max": 2,
+        "tipo": "citado",
+        "fuente": "https://extension.purdue.edu/extmedia/BP/BP-56.html"
+      },
+      "eficacia_rotacion": {
+        "valor": "alta",
+        "tipo": "citado",
+        "fuente": "https://typeset.io/pdf/gray-leaf-spot-of-corn-54wybiqd2o.pdf"
+      },
+      "ventana": {
+        "meses": [
+          7,
+          8
+        ],
+        "etapa": "pre-espigado a llenado de grano",
+        "tipo": "supuesto",
+        "nota": "Purdue describe julio y agosto como el periodo critico en un anio epidemico; generalizarlo es un supuesto."
+      },
+      "clima": {
+        "temp": {
+          "criterio": "horaria",
+          "min": 21.0,
+          "max": 32.0,
+          "tipo": "citado",
+          "fuente": "https://cropwatch.unl.edu/plant-disease/corn/gray-leaf-spot/",
+          "nota": "70-90 F. Purdue da 75-95 F; Kentucky 70-85 F."
+        },
+        "horas_mojado_min": {
+          "valor": 12,
+          "tipo": "citado",
+          "fuente": "https://cropwatch.unl.edu/plant-disease/corn/gray-leaf-spot/"
+        },
+        "hr_umbrales": [
+          85,
+          90,
+          95
+        ],
+        "hr_referencia": 90
+      },
+      "riesgos_externos": [
+        "Esporas transportadas por el viento desde residuo de maiz en campos vecinos."
+      ],
+      "lagunas": [
+        "Las fuentes discrepan en el umbral de HR (90 % frente a mas de 95 %) y en el rango termico.",
+        "En siembra directa puede hacer falta mas de un anio fuera de maiz."
+      ],
+      "tipo_problema": "hongo",
+      "medio_supervivencia": {
+        "clave": "residuo_superficie",
+        "detalle": "Residuo de maiz en superficie; no compite enterrado.",
+        "tipo": "citado",
+        "fuente": "https://typeset.io/pdf/gray-leaf-spot-of-corn-54wybiqd2o.pdf"
+      }
+    },
+    "mancha_alquitran_maiz": {
+      "nombre": "Mancha de alquitran",
+      "patogeno": "Phyllachora maydis",
+      "hospedantes": [
+        "maiz"
+      ],
+      "persistencia_inoculo_anios": {
+        "min": null,
+        "max": null,
+        "tipo": "citado",
+        "fuente": "https://cropprotectionnetwork.org/web-books/tar-spot-of-corn",
+        "nota": "Inverna en residuo de maiz. No se sabe cuantos anios de rotacion reducen el inoculo."
+      },
+      "rotacion_min_anios": {
+        "min": null,
+        "max": null,
+        "tipo": "citado",
+        "fuente": "https://cropprotectionnetwork.org/web-books/tar-spot-of-corn"
+      },
+      "eficacia_rotacion": {
+        "valor": "incierta",
+        "tipo": "citado",
+        "fuente": "https://cropprotectionnetwork.org/publications/an-overview-of-tar-spot-archived",
+        "nota": "CPN: la rotacion parece tener un papel menor. Virginia Tech: maiz continuo con mas riesgo que rotado."
+      },
+      "ventana": {
+        "meses": [
+          7,
+          8,
+          9
+        ],
+        "etapa": "cierre de dosel a madurez",
+        "tipo": "supuesto"
+      },
+      "clima": {
+        "temp": {
+          "criterio": "media_movil_30d",
+          "min": 18.0,
+          "max": 23.0,
+          "tipo": "citado",
+          "fuente": "https://www.canr.msu.edu/irrigation/upoads/files/TelenkoCropDiseasesMichiana.24.pdf",
+          "nota": "Media de 30 dias de 64-73 F (Webster et al. 2023, CPN-5012). Fuentes anteriores: 60-70 F."
+        },
+        "horas_mojado_min": {
+          "valor": 7,
+          "tipo": "citado",
+          "fuente": "https://cropprotectionnetwork.org/publications/an-overview-of-tar-spot-archived"
+        },
+        "hr_umbrales": [
+          75,
+          85,
+          90
+        ],
+        "hr_referencia": 75
+      },
+      "riesgos_externos": [
+        "Esporas desde campos vecinos: una fuente comercial cita hasta ~240 m; puede anular lo que se haga dentro del lote."
+      ],
+      "lagunas": [
+        "Evidencia contradictoria sobre humedad: fuentes clasicas piden HR mayor de 75 %; el estudio de 2023 observo desarrollo con HR menor de 90 % durante 2-3 semanas y freno con humedad excesiva. El proxy horario de HR puede ir en sentido contrario en el extremo alto.",
+        "Eficacia de rotacion desconocida: el motor no asigna presion de inoculo.",
+        "Riego por aspersion aumenta mucho el riesgo y el motor no lo cuantifica."
+      ],
+      "tipo_problema": "hongo",
+      "medio_supervivencia": {
+        "clave": "residuo_superficie",
+        "detalle": "Residuo de maiz infestado en superficie.",
+        "tipo": "citado",
+        "fuente": "https://cropprotectionnetwork.org/encyclopedia/tar-spot-of-corn"
+      }
+    },
+    "gusano_raiz_maiz": {
+      "nombre": "Gusano de la raiz",
+      "patogeno": "Diabrotica virgifera virgifera / D. barberi",
+      "tipo_problema": "insecto",
+      "hospedantes": [
+        "maiz"
+      ],
+      "medio_supervivencia": {
+        "clave": "suelo_un_cultivo",
+        "detalle": "Huevos que invernan en el suelo; las larvas solo se alimentan de raices de maiz.",
+        "tipo": "citado",
+        "fuente": "https://cornrootworm.extension.iastate.edu/basics/life-cycle"
+      },
+      "persistencia_inoculo_anios": {
+        "min": 1,
+        "max": 2,
+        "tipo": "citado",
+        "fuente": "https://cornrootworm.extension.iastate.edu/basics/life-cycle",
+        "nota": "Normalmente un invierno. La variante de diapausa extendida del gusano norteno aguanta dos o mas inviernos y esta presente en Iowa."
+      },
+      "rotacion_min_anios": {
+        "min": 1,
+        "max": 2,
+        "tipo": "citado",
+        "fuente": "https://crops.extension.iastate.edu/cropnews/2015/08/corn-rootworm-management-update"
+      },
+      "eficacia_rotacion": {
+        "valor": "alta",
+        "tipo": "citado",
+        "fuente": "https://crops.extension.iastate.edu/cropnews/2015/08/corn-rootworm-management-update",
+        "nota": "Muy eficaz en Iowa, con la excepcion de la diapausa extendida."
+      },
+      "ventana": null,
+      "clima": null,
+      "riesgos_externos": [],
+      "lagunas": [
+        "Clima no evaluado: no hay regla climatica con fuente para este insecto.",
+        "Variante de soya del gusano occidental: pone huevos en soya y anula la rotacion maiz-soya; reportada en Illinois, Indiana y otros estados. Verificar presencia local.",
+        "Diapausa extendida del gusano norteno: puede daniar maiz de primer anio tras soya."
+      ]
+    },
+    "roya_sur_maiz": {
+      "nombre": "Roya del sur",
+      "patogeno": "Puccinia polysora",
+      "tipo_problema": "hongo",
+      "hospedantes": [
+        "maiz"
+      ],
+      "medio_supervivencia": {
+        "clave": "no_sobrevive_viento",
+        "detalle": "No inverna en el Medio Oeste; las esporas llegan cada anio desde el sur.",
+        "tipo": "citado",
+        "fuente": "https://farmdocdaily.illinois.edu/?p=25833"
+      },
+      "persistencia_inoculo_anios": {
+        "min": 0,
+        "max": 0,
+        "tipo": "citado",
+        "fuente": "https://farmdocdaily.illinois.edu/?p=25833"
+      },
+      "rotacion_min_anios": {
+        "min": null,
+        "max": null,
+        "tipo": "citado",
+        "fuente": "https://fssystem.com/Resource-Center/Resource-Detail/common-and-southern-rust-of-corn"
+      },
+      "eficacia_rotacion": {
+        "valor": "nula",
+        "tipo": "citado",
+        "fuente": "https://fssystem.com/Resource-Center/Resource-Detail/common-and-southern-rust-of-corn",
+        "nota": "Rotacion y labranza no sirven contra royas."
+      },
+      "ventana": null,
+      "clima": null,
+      "riesgos_externos": [
+        "Llegada de esporas desde el sur: seguir los mapas de monitoreo regionales en temporada."
+      ],
+      "lagunas": [
+        "Clima no evaluado. Incluida como caso de contraste: un problema que ninguna rotacion resuelve."
+      ]
+    }
+  }
+}

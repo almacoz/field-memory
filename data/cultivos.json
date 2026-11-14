@@ -1,0 +1,76 @@
+{
+  "_meta": {
+    "nota": "Rasgos cualitativos para ordenar rotaciones. TODOS son supuestos de conocimiento agronomico general, sin fuente adjunta todavia. Sustituir por datos de FAO GAEZ / USDA antes de presentarlos como evidencia.",
+    "escala": "1 = bajo, 2 = medio, 3 = alto",
+    "agua": {
+      "fuente_zr_p": "https://www.fao.org/4/X0490e/x0490e0e.htm",
+      "nota": "zr_m es el punto medio del rango de la tabla 22 de FAO-56 (maiz 1.0-1.7, trigo de invierno 1.5-1.8; p 0.55). Soya: valores recordados, sin verificar. kc_mensual: SUPUESTO, curva mensual aproximada para Iowa; sustituir por Kc de FAO-56 tabla 12 con calendario local.",
+      "kc_fuera_de_temporada": 0.3
+    }
+  },
+  "cultivos": {
+    "maiz": {
+      "nombre": "Maíz",
+      "leguminosa": false,
+      "demanda_hidrica": 3,
+      "aporte_residuo": 3,
+      "cobertura_invernal": false,
+      "tipo": "supuesto",
+      "agua": {
+        "zr_m": 1.35,
+        "p": 0.55,
+        "kc_mensual": {
+          "5": 0.4,
+          "6": 0.8,
+          "7": 1.2,
+          "8": 1.2,
+          "9": 0.7
+        },
+        "tipo_zr_p": "citado"
+      },
+      "nombre_en": "corn"
+    },
+    "soya": {
+      "nombre": "Soya",
+      "leguminosa": true,
+      "demanda_hidrica": 2,
+      "aporte_residuo": 1,
+      "cobertura_invernal": false,
+      "tipo": "supuesto",
+      "agua": {
+        "zr_m": 1.0,
+        "p": 0.5,
+        "kc_mensual": {
+          "5": 0.4,
+          "6": 0.7,
+          "7": 1.1,
+          "8": 1.15,
+          "9": 0.7
+        },
+        "tipo_zr_p": "supuesto"
+      },
+      "nombre_en": "soybean"
+    },
+    "trigo": {
+      "nombre": "Trigo de invierno",
+      "leguminosa": false,
+      "demanda_hidrica": 2,
+      "aporte_residuo": 2,
+      "cobertura_invernal": true,
+      "tipo": "supuesto",
+      "agua": {
+        "zr_m": 1.65,
+        "p": 0.55,
+        "kc_mensual": {
+          "3": 0.5,
+          "4": 0.9,
+          "5": 1.15,
+          "6": 1.0,
+          "7": 0.4
+        },
+        "tipo_zr_p": "citado"
+      },
+      "nombre_en": "winter wheat"
+    }
+  }
+}

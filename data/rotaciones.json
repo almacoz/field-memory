@@ -1,0 +1,90 @@
+{
+  "actual": "maiz_continuo",
+  "rotaciones": {
+    "maiz_continuo": {
+      "nombre": "Maiz continuo (actual)",
+      "secuencia": [
+        "maiz"
+      ],
+      "agricultor": {
+        "es": {
+          "nombre": "Maíz otra vez",
+          "lo_bueno": "No cambia máquinas ni comprador.",
+          "el_costo": "Suma problemas año tras año.",
+          "tecnico": "semilla resistente y manejo del rastrojo."
+        },
+        "en": {
+          "nombre": "Corn again",
+          "lo_bueno": "No change in equipment or buyer.",
+          "el_costo": "Problems build up year after year.",
+          "tecnico": "resistant seed and residue management."
+        }
+      }
+    },
+    "maiz_soya": {
+      "nombre": "Maiz - Soya",
+      "secuencia": [
+        "maiz",
+        "soya"
+      ],
+      "agricultor": {
+        "es": {
+          "nombre": "Maíz y soya",
+          "lo_bueno": "La soya aporta nitrógeno al suelo.",
+          "el_costo": "Cambia un hongo por otro si el lote ya tuvo moho blanco.",
+          "tecnico": "si alguna vez hubo moho blanco en este lote."
+        },
+        "en": {
+          "nombre": "Corn and soybean",
+          "lo_bueno": "Soybean adds nitrogen to the soil.",
+          "el_costo": "Trades one fungus for another if the field has had white mold.",
+          "tecnico": "whether this field has ever had white mold."
+        }
+      }
+    },
+    "maiz_soya_trigo": {
+      "nombre": "Maiz - Soya - Trigo",
+      "secuencia": [
+        "maiz",
+        "soya",
+        "trigo"
+      ],
+      "agricultor": {
+        "es": {
+          "nombre": "Maíz, soya y trigo",
+          "lo_bueno": "Suelo cubierto en invierno un año de cada tres.",
+          "el_costo": "Hay que tener dónde vender el trigo.",
+          "tecnico": "precio y comprador de trigo en su zona."
+        },
+        "en": {
+          "nombre": "Corn, soybean and wheat",
+          "lo_bueno": "Soil covered in winter one year in three.",
+          "el_costo": "You need somewhere to sell the wheat.",
+          "tecnico": "wheat price and buyers in your area."
+        }
+      }
+    },
+    "maiz_trigo": {
+      "nombre": "Maiz - Trigo (sin soya)",
+      "secuencia": [
+        "maiz",
+        "trigo"
+      ],
+      "nota": "Opcion de contraste: elimina el hospedante de moho blanco. Poco habitual en Iowa; viabilidad de mercado sin evaluar.",
+      "agricultor": {
+        "es": {
+          "nombre": "Maíz y trigo",
+          "lo_bueno": "Sin soya no hay moho blanco; suelo cubierto un invierno de cada dos.",
+          "el_costo": "Poco común en la zona; mercado sin evaluar.",
+          "tecnico": "si hay mercado para el trigo y cómo queda el nitrógeno sin leguminosa."
+        },
+        "en": {
+          "nombre": "Corn and wheat",
+          "lo_bueno": "No soybean means no white mold; soil covered every other winter.",
+          "el_costo": "Uncommon locally; market not assessed.",
+          "tecnico": "wheat market and nitrogen supply without a legume."
+        }
+      }
+    }
+  }
+}

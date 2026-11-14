@@ -1,0 +1,434 @@
+{
+ "idioma": "en",
+ "sitio": {
+  "lat": 42.03,
+  "lon": -93.63,
+  "datos_hasta": "2025-12-31"
+ },
+ "datos_sinteticos": true,
+ "textos": {
+  "aviso": "This tool helps you compare. It does not predict disease or replace what you and your advisor know about the field.",
+  "leyenda": "Levels compare options with each other; they are not the probability of disease.",
+  "celda": "NASA data measures an area about 50 km wide. It does not see your field on its own."
+ },
+ "lote_hoy": {
+  "agua": {
+   "deficit_mm": 0,
+   "capacidad_mm": 196,
+   "fraccion_llena": 1.0,
+   "texto_estado": "0 mm short of a full soil profile (2025-12-31).",
+   "texto_anio": "In 2025 there were 51 thirsty days for corn; the usual is 44.8.",
+   "textura": {
+    "clave": "franco_limoso",
+    "nombre": "Franco limoso",
+    "nombre_en": "silt loam",
+    "agua_util_mm_m": 145,
+    "materia_organica_alta": false,
+    "nombre_mostrar": "Silt loam"
+   },
+   "limites": [
+    "Lluvia y temperatura de una celda de ~50 km; no es el lote.",
+    "Toda la lluvia infiltra (sin escorrentia): subestima el estres tras lluvias intensas.",
+    "Cada cultivo se evalua como si se sembrara todos los anios; sin arrastre entre cultivos.",
+    "Curvas Kc mensuales y profundidad de raiz fija: supuestos.",
+    "El ajuste por materia organica es un supuesto de sensibilidad, no una medicion."
+   ]
+  },
+  "tarjetas": [
+   {
+    "clave": "gusano_raiz_maiz",
+    "nombre": "Corn rootworm",
+    "nivel": {
+     "clave": "alta",
+     "etiqueta": "High attention",
+     "simbolo": "▲"
+    },
+    "donde_pasa_el_invierno": "Eggs in the soil. The larvae only eat corn roots.",
+    "este_anio": "We do not measure weather for this problem. The alert comes only from crop history.",
+    "este_anio_dato": null,
+    "que_lo_frena": "One or two years without corn. In your area some eggs last two winters.",
+    "pregunta": "Did you see lodged corn or chewed roots this year?",
+    "tecnico": "whether rootworm in your area also lays eggs in soybean fields.",
+    "fuentes": [
+     "https://cornrootworm.extension.iastate.edu/basics/life-cycle",
+     "https://crops.extension.iastate.edu/cropnews/2015/08/corn-rootworm-management-update"
+    ],
+    "supuestos": [],
+    "lagunas": [
+     "Clima no evaluado: no hay regla climatica con fuente para este insecto.",
+     "Variante de soya del gusano occidental: pone huevos en soya y anula la rotacion maiz-soya; reportada en Illinois, Indiana y otros estados. Verificar presencia local.",
+     "Diapausa extendida del gusano norteno: puede daniar maiz de primer anio tras soya."
+    ]
+   },
+   {
+    "clave": "mancha_alquitran_maiz",
+    "nombre": "Corn tar spot",
+    "nivel": {
+     "clave": "no_evaluable",
+     "etiqueta": "Unknown",
+     "simbolo": "?"
+    },
+    "donde_pasa_el_invierno": "In corn residue.",
+    "este_anio": "32 days of favorable weather in 2025. Of 25 years measured, 9 were worse.",
+    "este_anio_dato": {
+     "anio": 2025,
+     "dias": 32,
+     "anios_medidos": 25,
+     "anios_peores": 9,
+     "serie": {
+      "2001": 35,
+      "2002": 41,
+      "2003": 29,
+      "2004": 31,
+      "2005": 31,
+      "2006": 27,
+      "2007": 38,
+      "2008": 36,
+      "2009": 25,
+      "2010": 35,
+      "2011": 30,
+      "2012": 29,
+      "2013": 30,
+      "2014": 41,
+      "2015": 32,
+      "2016": 29,
+      "2017": 32,
+      "2018": 33,
+      "2019": 39,
+      "2020": 28,
+      "2021": 37,
+      "2022": 30,
+      "2023": 31,
+      "2024": 30,
+      "2025": 32
+     }
+    },
+    "que_lo_frena": "Science does not yet know how many years without corn are needed. It also blows in from nearby fields.",
+    "pregunta": "Did you see raised black dots on corn leaves this year?",
+    "tecnico": "whether tar spot was reported nearby this year.",
+    "fuentes": [
+     "https://cropprotectionnetwork.org/encyclopedia/tar-spot-of-corn",
+     "https://cropprotectionnetwork.org/publications/an-overview-of-tar-spot-archived",
+     "https://cropprotectionnetwork.org/web-books/tar-spot-of-corn",
+     "https://www.canr.msu.edu/irrigation/upoads/files/TelenkoCropDiseasesMichiana.24.pdf"
+    ],
+    "supuestos": [
+     "ventana susceptible"
+    ],
+    "lagunas": [
+     "Evidencia contradictoria sobre humedad: fuentes clasicas piden HR mayor de 75 %; el estudio de 2023 observo desarrollo con HR menor de 90 % durante 2-3 semanas y freno con humedad excesiva. El proxy horario de HR puede ir en sentido contrario en el extremo alto.",
+     "Eficacia de rotacion desconocida: el motor no asigna presion de inoculo.",
+     "Riego por aspersion aumenta mucho el riesgo y el motor no lo cuantifica."
+    ]
+   },
+   {
+    "clave": "roya_sur_maiz",
+    "nombre": "Southern rust",
+    "nivel": {
+     "clave": "no_depende_de_la_rotacion",
+     "etiqueta": "Comes from outside",
+     "simbolo": "→"
+    },
+    "donde_pasa_el_invierno": "It does not stay in your field. It blows in from the south each year.",
+    "este_anio": "We do not measure weather for this problem. The alert comes only from crop history.",
+    "este_anio_dato": null,
+    "que_lo_frena": "Changing crops does not change this risk.",
+    "pregunta": null,
+    "tecnico": "regional rust alerts during the season.",
+    "fuentes": [
+     "https://farmdocdaily.illinois.edu/?p=25833",
+     "https://fssystem.com/Resource-Center/Resource-Detail/common-and-southern-rust-of-corn"
+    ],
+    "supuestos": [],
+    "lagunas": [
+     "Clima no evaluado. Incluida como caso de contraste: un problema que ninguna rotacion resuelve."
+    ]
+   },
+   {
+    "clave": "mancha_gris_maiz",
+    "nombre": "Corn gray leaf spot",
+    "nivel": {
+     "clave": "baja",
+     "etiqueta": "Low attention",
+     "simbolo": "▼"
+    },
+    "donde_pasa_el_invierno": "In corn residue left on the soil surface.",
+    "este_anio": "0 days of favorable weather in 2025. Of 25 years measured, 0 were worse.",
+    "este_anio_dato": {
+     "anio": 2025,
+     "dias": 0,
+     "anios_medidos": 25,
+     "anios_peores": 0,
+     "serie": {
+      "2001": 0,
+      "2002": 0,
+      "2003": 0,
+      "2004": 0,
+      "2005": 0,
+      "2006": 0,
+      "2007": 0,
+      "2008": 0,
+      "2009": 0,
+      "2010": 0,
+      "2011": 0,
+      "2012": 0,
+      "2013": 0,
+      "2014": 0,
+      "2015": 0,
+      "2016": 0,
+      "2017": 0,
+      "2018": 0,
+      "2019": 0,
+      "2020": 0,
+      "2021": 0,
+      "2022": 0,
+      "2023": 0,
+      "2024": 0,
+      "2025": 0
+     }
+    },
+    "que_lo_frena": "One year without corn. The residue can stay and keep protecting the soil.",
+    "pregunta": "Did you see long gray spots on corn leaves this year?",
+    "tecnico": "tolerant hybrids for your area.",
+    "fuentes": [
+     "https://cropwatch.unl.edu/plant-disease/corn/gray-leaf-spot/",
+     "https://extension.purdue.edu/extmedia/BP/BP-56.html",
+     "https://typeset.io/pdf/gray-leaf-spot-of-corn-54wybiqd2o.pdf"
+    ],
+    "supuestos": [
+     "ventana susceptible"
+    ],
+    "lagunas": [
+     "Las fuentes discrepan en el umbral de HR (90 % frente a mas de 95 %) y en el rango termico.",
+     "En siembra directa puede hacer falta mas de un anio fuera de maiz."
+    ]
+   }
+  ]
+ },
+ "opciones": [
+  {
+   "clave": "maiz_continuo",
+   "nombre": "Corn again",
+   "es_actual": true,
+   "lineas": [
+    {
+     "titulo": "Corn gray leaf spot",
+     "nivel": {
+      "clave": "alta",
+      "etiqueta": "High attention",
+      "simbolo": "▲"
+     },
+     "texto": "builds up. The residue that protects the soil also shelters it."
+    },
+    {
+     "titulo": "Corn tar spot",
+     "nivel": {
+      "clave": "no_evaluable",
+      "etiqueta": "Unknown",
+      "simbolo": "?"
+     },
+     "texto": "nobody knows how many years without its crop are needed."
+    },
+    {
+     "titulo": "Corn rootworm",
+     "nivel": {
+      "clave": "alta",
+      "etiqueta": "High attention",
+      "simbolo": "▲"
+     },
+     "texto": "this year's eggs hatch onto the same crop."
+    },
+    {
+     "titulo": "Water",
+     "nivel": null,
+     "texto": "44.8 thirsty days per season on silt loam soil."
+    }
+   ],
+   "lo_bueno": "No change in equipment or buyer.",
+   "el_costo": "Problems build up year after year.",
+   "tecnico": "resistant seed and residue management.",
+   "trade_offs_tecnicos": [
+    "Conflicto sin resolver: el residuo en superficie protege el suelo y retiene agua, pero ahi invernan mancha gris, mancha de alquitran, y esta rotacion no da descanso suficiente.",
+    "Roya del sur: llega por viento cada anio; ninguna rotacion cambia este riesgo."
+   ],
+   "orden": {
+    "sanidad": 8,
+    "agua": 44.8,
+    "suelo": -1.0
+   }
+  },
+  {
+   "clave": "maiz_soya",
+   "nombre": "Corn and soybean",
+   "es_actual": false,
+   "lineas": [
+    {
+     "titulo": "Soybean white mold",
+     "nivel": {
+      "clave": "alta",
+      "etiqueta": "High attention",
+      "simbolo": "▲"
+     },
+     "texto": "lives for years in the soil and this rotation gives it little rest."
+    },
+    {
+     "titulo": "Corn gray leaf spot",
+     "nivel": {
+      "clave": "baja",
+      "etiqueta": "Low attention",
+      "simbolo": "▼"
+     },
+     "texto": "1 year(s) without its crop hold it back."
+    },
+    {
+     "titulo": "Corn tar spot",
+     "nivel": {
+      "clave": "no_evaluable",
+      "etiqueta": "Unknown",
+      "simbolo": "?"
+     },
+     "texto": "nobody knows how many years without its crop are needed."
+    },
+    {
+     "titulo": "Corn rootworm",
+     "nivel": {
+      "clave": "media",
+      "etiqueta": "Medium attention",
+      "simbolo": "●"
+     },
+     "texto": "goes down but does not disappear: it can last up to 2 years."
+    },
+    {
+     "titulo": "Water",
+     "nivel": null,
+     "texto": "46.2 thirsty days per season on silt loam soil."
+    }
+   ],
+   "lo_bueno": "Soybean adds nitrogen to the soil.",
+   "el_costo": "Trades one fungus for another if the field has had white mold.",
+   "tecnico": "whether this field has ever had white mold.",
+   "trade_offs_tecnicos": [
+    "La rotacion permite conservar el residuo en superficie (proteccion del suelo, retencion de agua) sin acumular inoculo de mancha gris. No se puede afirmar lo mismo de mancha de alquitran: eficacia de rotacion incierta.",
+    "Esta rotacion incluye un hospedante de moho blanco, que vive en el suelo por anios: la labranza ayuda poco y solo lo reduce una rotacion larga.",
+    "Roya del sur: llega por viento cada anio; ninguna rotacion cambia este riesgo."
+   ],
+   "orden": {
+    "sanidad": 8,
+    "agua": 46.2,
+    "suelo": -2.5
+   }
+  },
+  {
+   "clave": "maiz_soya_trigo",
+   "nombre": "Corn, soybean and wheat",
+   "es_actual": false,
+   "lineas": [
+    {
+     "titulo": "Soybean white mold",
+     "nivel": {
+      "clave": "media",
+      "etiqueta": "Medium attention",
+      "simbolo": "●"
+     },
+     "texto": "goes down but does not disappear: it can last up to 8 years."
+    },
+    {
+     "titulo": "Corn gray leaf spot",
+     "nivel": {
+      "clave": "baja",
+      "etiqueta": "Low attention",
+      "simbolo": "▼"
+     },
+     "texto": "2 year(s) without its crop hold it back."
+    },
+    {
+     "titulo": "Corn tar spot",
+     "nivel": {
+      "clave": "no_evaluable",
+      "etiqueta": "Unknown",
+      "simbolo": "?"
+     },
+     "texto": "nobody knows how many years without its crop are needed."
+    },
+    {
+     "titulo": "Corn rootworm",
+     "nivel": {
+      "clave": "baja",
+      "etiqueta": "Low attention",
+      "simbolo": "▼"
+     },
+     "texto": "2 year(s) without its crop hold it back."
+    },
+    {
+     "titulo": "Water",
+     "nivel": null,
+     "texto": "35.3 thirsty days per season on silt loam soil."
+    }
+   ],
+   "lo_bueno": "Soil covered in winter one year in three.",
+   "el_costo": "You need somewhere to sell the wheat.",
+   "tecnico": "wheat price and buyers in your area.",
+   "trade_offs_tecnicos": [
+    "La rotacion permite conservar el residuo en superficie (proteccion del suelo, retencion de agua) sin acumular inoculo de mancha gris. No se puede afirmar lo mismo de mancha de alquitran: eficacia de rotacion incierta.",
+    "Esta rotacion incluye un hospedante de moho blanco, que vive en el suelo por anios: la labranza ayuda poco y solo lo reduce una rotacion larga.",
+    "Roya del sur: llega por viento cada anio; ninguna rotacion cambia este riesgo."
+   ],
+   "orden": {
+    "sanidad": 6,
+    "agua": 35.3,
+    "suelo": -3.66
+   }
+  },
+  {
+   "clave": "maiz_trigo",
+   "nombre": "Corn and wheat",
+   "es_actual": false,
+   "lineas": [
+    {
+     "titulo": "Corn gray leaf spot",
+     "nivel": {
+      "clave": "baja",
+      "etiqueta": "Low attention",
+      "simbolo": "▼"
+     },
+     "texto": "1 year(s) without its crop hold it back."
+    },
+    {
+     "titulo": "Corn tar spot",
+     "nivel": {
+      "clave": "no_evaluable",
+      "etiqueta": "Unknown",
+      "simbolo": "?"
+     },
+     "texto": "nobody knows how many years without its crop are needed."
+    },
+    {
+     "titulo": "Corn rootworm",
+     "nivel": {
+      "clave": "media",
+      "etiqueta": "Medium attention",
+      "simbolo": "●"
+     },
+     "texto": "goes down but does not disappear: it can last up to 2 years."
+    },
+    {
+     "titulo": "Water",
+     "nivel": null,
+     "texto": "29.2 thirsty days per season on silt loam soil."
+    }
+   ],
+   "lo_bueno": "No soybean means no white mold; soil covered every other winter.",
+   "el_costo": "Uncommon locally; market not assessed.",
+   "tecnico": "wheat market and nitrogen supply without a legume.",
+   "trade_offs_tecnicos": [
+    "La rotacion permite conservar el residuo en superficie (proteccion del suelo, retencion de agua) sin acumular inoculo de mancha gris. No se puede afirmar lo mismo de mancha de alquitran: eficacia de rotacion incierta.",
+    "Roya del sur: llega por viento cada anio; ninguna rotacion cambia este riesgo."
+   ],
+   "orden": {
+    "sanidad": 5,
+    "agua": 29.2,
+    "suelo": -2.5
+   }
+  }
+ ]
+}

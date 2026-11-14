@@ -1,0 +1,68 @@
+{
+  "_meta": {
+    "fuente": "https://content.ces.ncsu.edu/soil-water-and-crop-characteristics-important-to-irrigation-scheduling",
+    "nota": "Agua util (mm por metro de suelo) = punto medio del rango de NC State Extension por clase textural. El rango se conserva para sensibilidad.",
+    "ajuste_mo_alta": {
+      "factor": 1.1,
+      "tipo": "supuesto",
+      "nota": "Aumento de agua util con materia organica alta. Sin fuente; la literatura discrepa sobre el tamanio del efecto. Solo para sensibilidad."
+    },
+    "por_defecto": "franco_limoso"
+  },
+  "texturas": {
+    "arena": {
+      "nombre": "Arena",
+      "awc_mm_m": 80,
+      "rango": [
+        50,
+        110
+      ],
+      "nombre_en": "sand"
+    },
+    "franco_arenoso": {
+      "nombre": "Franco arenoso",
+      "awc_mm_m": 130,
+      "rango": [
+        110,
+        150
+      ],
+      "nombre_en": "sandy loam"
+    },
+    "franco": {
+      "nombre": "Franco",
+      "awc_mm_m": 140,
+      "rango": [
+        110,
+        170
+      ],
+      "nombre_en": "loam"
+    },
+    "franco_limoso": {
+      "nombre": "Franco limoso",
+      "awc_mm_m": 145,
+      "rango": [
+        110,
+        180
+      ],
+      "nombre_en": "silt loam"
+    },
+    "franco_arcillo_limoso": {
+      "nombre": "Franco arcillo-limoso",
+      "awc_mm_m": 130,
+      "rango": [
+        110,
+        150
+      ],
+      "nombre_en": "silty clay loam"
+    },
+    "arcilla": {
+      "nombre": "Arcilla",
+      "awc_mm_m": 130,
+      "rango": [
+        100,
+        160
+      ],
+      "nombre_en": "clay"
+    }
+  }
+}

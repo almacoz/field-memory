@@ -1,0 +1,135 @@
+{
+  "_meta": {
+    "nota": "Textos en lenguaje de campo. Cada frase resume un campo de reglas.json; si cambia la regla, cambia el texto. es = para probar con Alex; en = idioma obligatorio del envio."
+  },
+  "problemas": {
+    "moho_blanco_soya": {
+      "es": {
+        "nombre": "Moho blanco de la soya",
+        "invierno": "Como granos negros duros en el suelo. Aguantan años.",
+        "frena": "Varios años sin soya ni otros cultivos de hoja ancha. Arar ayuda poco.",
+        "pregunta": "¿Vio moho blanco en la soya de este lote alguna vez?",
+        "tecnico": "si hubo moho blanco en lotes vecinos."
+      },
+      "en": {
+        "name": "Soybean white mold",
+        "winter": "As hard black grains in the soil. They last for years.",
+        "stops": "Several years without soybean or other broadleaf crops. Tillage helps little.",
+        "question": "Have you ever seen white mold on soybean in this field?",
+        "advisor": "whether nearby fields have had white mold."
+      }
+    },
+    "mancha_gris_maiz": {
+      "es": {
+        "nombre": "Mancha gris del maíz",
+        "invierno": "En el rastrojo de maíz que queda encima del suelo.",
+        "frena": "Un año sin maíz. El rastrojo puede quedarse y seguir cuidando el suelo.",
+        "pregunta": "¿Vio manchas grises alargadas en las hojas del maíz este año?",
+        "tecnico": "híbridos tolerantes para su zona."
+      },
+      "en": {
+        "name": "Corn gray leaf spot",
+        "winter": "In corn residue left on the soil surface.",
+        "stops": "One year without corn. The residue can stay and keep protecting the soil.",
+        "question": "Did you see long gray spots on corn leaves this year?",
+        "advisor": "tolerant hybrids for your area."
+      }
+    },
+    "mancha_alquitran_maiz": {
+      "es": {
+        "nombre": "Mancha de alquitrán",
+        "invierno": "En el rastrojo de maíz.",
+        "frena": "La ciencia todavía no sabe cuántos años sin maíz hacen falta. Además llega con el viento desde lotes vecinos.",
+        "pregunta": "¿Vio puntos negros en relieve en las hojas del maíz este año?",
+        "tecnico": "si hubo mancha de alquitrán cerca este año."
+      },
+      "en": {
+        "name": "Corn tar spot",
+        "winter": "In corn residue.",
+        "stops": "Science does not yet know how many years without corn are needed. It also blows in from nearby fields.",
+        "question": "Did you see raised black dots on corn leaves this year?",
+        "advisor": "whether tar spot was reported nearby this year."
+      }
+    },
+    "gusano_raiz_maiz": {
+      "es": {
+        "nombre": "Gusano de la raíz",
+        "invierno": "Huevos en el suelo. Al nacer solo comen raíz de maíz.",
+        "frena": "Uno o dos años sin maíz. En su zona hay huevos que aguantan dos inviernos.",
+        "pregunta": "¿Vio maíz caído o raíces comidas este año?",
+        "tecnico": "si en su zona el gusano pone huevos también en soya."
+      },
+      "en": {
+        "name": "Corn rootworm",
+        "winter": "Eggs in the soil. The larvae only eat corn roots.",
+        "stops": "One or two years without corn. In your area some eggs last two winters.",
+        "question": "Did you see lodged corn or chewed roots this year?",
+        "advisor": "whether rootworm in your area also lays eggs in soybean fields."
+      }
+    },
+    "roya_sur_maiz": {
+      "es": {
+        "nombre": "Roya del sur",
+        "invierno": "No se queda en su lote. Llega cada año con el viento del sur.",
+        "frena": "Cambiar de cultivo no cambia este riesgo.",
+        "pregunta": null,
+        "tecnico": "los avisos regionales de roya en temporada."
+      },
+      "en": {
+        "name": "Southern rust",
+        "winter": "It does not stay in your field. It blows in from the south each year.",
+        "stops": "Changing crops does not change this risk.",
+        "question": null,
+        "advisor": "regional rust alerts during the season."
+      }
+    }
+  },
+  "etiquetas": {
+    "es": {
+      "alta": "Atención alta",
+      "media": "Atención media",
+      "baja": "Atención baja",
+      "no_evaluable": "No se sabe",
+      "no_depende_de_la_rotacion": "Viene de fuera",
+      "este_anio_con": "{d} días con clima a su favor en {anio}. De {n} años medidos, {k} fueron peores.",
+      "este_anio_sin": "No medimos el clima para este problema. El aviso sale solo del historial de cultivos.",
+      "provisional": " Dato provisional del año en curso.",
+      "linea_alta_residuo": "se acumula. El rastrojo que cuida el suelo también lo guarda.",
+      "linea_alta_suelo_un_cultivo": "los huevos de este año nacen sobre su mismo cultivo.",
+      "linea_alta_suelo_anios": "vive años en el suelo y esta rotación le da poco descanso.",
+      "linea_media": "baja, pero no desaparece: puede aguantar hasta {pers} años.",
+      "linea_baja": "{b} año(s) sin su cultivo lo frenan.",
+      "linea_no_evaluable": "no se sabe cuántos años sin su cultivo hacen falta.",
+      "agua": "Agua",
+      "agua_linea": "{d} días con sed por temporada en suelo {tx}.",
+      "aviso": "Esta herramienta ayuda a comparar. No predice enfermedades ni reemplaza lo que usted y su técnico conocen del lote.",
+      "leyenda": "Los niveles comparan opciones entre sí; no son la probabilidad de que aparezca la enfermedad.",
+      "celda": "El dato de la NASA mide una zona de unos 50 km. No ve su lote por separado.",
+      "agua_estado": "Faltan {mm} mm para llenar el suelo ({fecha}).",
+      "agua_anio": "En {anio} hubo {d} días con sed para {cultivo}; lo normal son {m}."
+    },
+    "en": {
+      "alta": "High attention",
+      "media": "Medium attention",
+      "baja": "Low attention",
+      "no_evaluable": "Unknown",
+      "no_depende_de_la_rotacion": "Comes from outside",
+      "este_anio_con": "{d} days of favorable weather in {anio}. Of {n} years measured, {k} were worse.",
+      "este_anio_sin": "We do not measure weather for this problem. The alert comes only from crop history.",
+      "provisional": " Provisional data for the current year.",
+      "linea_alta_residuo": "builds up. The residue that protects the soil also shelters it.",
+      "linea_alta_suelo_un_cultivo": "this year's eggs hatch onto the same crop.",
+      "linea_alta_suelo_anios": "lives for years in the soil and this rotation gives it little rest.",
+      "linea_media": "goes down but does not disappear: it can last up to {pers} years.",
+      "linea_baja": "{b} year(s) without its crop hold it back.",
+      "linea_no_evaluable": "nobody knows how many years without its crop are needed.",
+      "agua": "Water",
+      "agua_linea": "{d} thirsty days per season on {tx} soil.",
+      "aviso": "This tool helps you compare. It does not predict disease or replace what you and your advisor know about the field.",
+      "leyenda": "Levels compare options with each other; they are not the probability of disease.",
+      "celda": "NASA data measures an area about 50 km wide. It does not see your field on its own.",
+      "agua_estado": "{mm} mm short of a full soil profile ({fecha}).",
+      "agua_anio": "In {anio} there were {d} thirsty days for {cultivo}; the usual is {m}."
+    }
+  }
+}

@@ -1,8 +1,20 @@
-# Comparador de rotaciones — NASA Space Apps 2026
+# Memoria del lote — comparador de rotaciones (NASA Space Apps 2026)
 
 Reto: "Cambio de rumbo: Adaptando las granjas con datos de la NASA".
-Punto de entrada para un agente nuevo: este archivo. El historial de decisiones está en
-`HANDOFF_spaceapps_rotaciones.md`.
+
+Un agricultor del Medio Oeste de EE. UU. indica dónde está su lote y qué siembra. La
+herramienta usa 25 años de clima de **NASA POWER** y reglas de los servicios de extensión
+para mostrar qué hongos y plagas deja la temporada en el lote, cuánta agua le faltó al
+cultivo, y cómo cambia eso con cada rotación. No da una receta: compara.
+
+| Documento | Para qué |
+|---|---|
+| `README.md` | Qué es, cómo correrlo, cómo calcula, límites |
+| `AGENTS.md` | **Leer primero si sos un agente**: mapa del código, contratos, reglas, checklist |
+| `CHANGELOG.md` | Historial de cambios y decisiones, por fecha |
+| `SECURITY.md` | Modelo de amenazas, qué está expuesto y qué hacer antes de publicar |
+| `CREDITS.md` | Fuentes de datos, fotos con licencia e imágenes generadas con IA |
+| `HANDOFF_spaceapps_rotaciones.md`, `GEMINI_UX.md` | Históricos (propuesta inicial y encargo de diseño); pueden estar desactualizados |
 
 ## El marco (idea central del proyecto)
 
@@ -20,51 +32,71 @@ De ahí sale el argumento que une enfermedad, suelo y agua: el residuo en superf
 el suelo y retiene agua, pero es donde invernan dos de los hongos; la rotación permite
 conservarlo sin acumular inóculo. El código genera ese texto por rotación (`trade_offs`).
 
-## Estado
+## Estado (15-nov-2026)
 
 | Pieza | Estado |
 |---|---|
-| `data/reglas.json` — 5 problemas; cada valor marcado citado (con URL) o supuesto | hecho |
-| `rotaciones/motor.py` — días favorables por clima, ventana susceptible, barrido de HR | hecho, con pruebas |
-| `rotaciones/comparador.py` — presión de inóculo por medio, riesgo ordinal, trade-offs | hecho, con pruebas |
-| `rotaciones/agua.py` — balance hídrico diario por cultivo y textura; contexto del sitio | hecho, con pruebas |
-| `rotaciones/power.py` — cliente POWER horario/diario con caché | **escrito, sin probar contra la API real** |
-| `data/cultivos.json` — rasgos de suelo y curvas Kc mensuales | **mayormente supuestos** |
-| `rotaciones/vista.py` — contrato para la interfaz, textos de campo en es/en | hecho, con pruebas |
-| `rotaciones/api.py` — FastAPI: `/api/evaluar` y la página | hecho; probado con POWER simulado |
-| `web/index.html` — página funcional sobria (formulario, tarjetas, opciones) | hecho; **JS sin probar en navegador** |
-| Capa visual y animaciones | pendiente: encargo en `GEMINI_UX.md` |
-| Demo y página del proyecto | no empezado |
+| Motor climático (`motor.py`) y comparador (`comparador.py`) | Hecho, con pruebas, verificado con datos reales de POWER |
+| Agua en el suelo (`agua.py`, FAO-56 + Hargreaves) | Hecho; 2012 y 1988 salen como años secos en Iowa |
+| Cliente NASA POWER (`power.py`) con caché | Hecho, probado contra la API real |
+| Mapa de suelos USDA (`ssurgo.py`): punto + mapa de 2 × 2 km | Hecho, probado contra Soil Data Access; 4 sitios precargados |
+| Contrato `vista` (`vista.py`) es/en | Hecho, con pruebas |
+| API (`api.py`) | Hecho |
+| Webapp por pasos (`web/index.html`) con demo guiada | Hecho, revisada en navegador |
+| Fotos de referencia con licencia | 4 de 4 verificadas (ver `CREDITS.md`) |
+| Pruebas | `pytest`: 46 pasan |
+| Video/diapositivas y página del proyecto en inglés | **Pendiente** |
 
-`pytest` pasa 26 pruebas sobre series sintéticas: verifican la lógica, no el clima.
-**Ningún resultado real existe todavía.** El entorno donde se escribió no tenía salida a
-`power.larc.nasa.gov`.
-
-## Primer paso obligatorio
+## Inicio rápido
 
 ```bash
-pip install pandas numpy scipy pytest fastapi uvicorn httpx
-python -m pytest -q
-python -m rotaciones.cli --lat 42.03 --lon -93.63 --inicio 2001 --fin 2025 \
-    --textura franco_limoso --labranza siembra_directa
+python3 -m venv .venv && source .venv/bin/activate
+pip install -r requirements-dev.txt
+python -m pytest -q                                   # 46 pruebas, sin red
+uvicorn rotaciones.api:app --reload --host 127.0.0.1 --port 8000
 ```
 
-Para la interfaz: `uvicorn rotaciones.api:app` y abrir http://127.0.0.1:8000. Si la NASA no
-responde, la página carga `web/ejemplo_*.json` (sintético) y lo avisa en pantalla.
-Regenerar ejemplos: `PYTHONPATH=. python tools/generar_ejemplo.py`.
+- Español: `http://127.0.0.1:8000/` · inglés (idioma de entrega): `?idioma=en` · demo guiada: `?demo=1`
+- Sin red, la página cae a `web/ejemplo_es.json` / `ejemplo_en.json` (datos sintéticos) y lo avisa en pantalla.
+- No hace falta `.env`: NASA POWER y SSURGO no piden clave. Variables opcionales en `.env.example`.
 
-Son 25 peticiones horarias y una diaria (1981 en adelante); quedan en `cache/`. Si el parser
-falla, ajustar `power.a_dataframe`. Si POWER rechaza un año por petición, partir por semestre.
+### Antes de una demo sin red confiable
 
-Revisar tras la primera corrida real:
-1. `anios_descartados_por_datos` vacío o casi.
-2. Que los niveles climáticos no salgan todos iguales. Los cortes (10 % y 30 % de días
-   favorables) son arbitrarios y se ajustan con datos reales.
-3. Mancha de alquitrán con HR ≥ 75 % durante 7 h: probablemente se cumple casi todas las
-   noches y solo discrimina la media térmica de 30 días. Si es así, declararlo.
-4. Días de estrés hídrico: comparar un año seco conocido (2012 en el Medio Oeste) con el resto.
-5. Validación: correr una coordenada del norte de Indiana o sur de Wisconsin y ver si 2018 y
-   2021 destacan para mancha de alquitrán.
+La primera consulta de cada sitio descarga ~26 años horarios de POWER (tarda). Precargar:
+
+```bash
+for c in "42.03 -93.63" "43.30 -89.38" "41.45 -86.93" "41.15 -96.50"; do
+  set -- $c; python -m rotaciones.cli --lat $1 --lon $2 --fin 2025
+done
+python -m rotaciones.ssurgo          # comprueba el mapa de suelos de los 4 sitios
+```
+
+### Otros comandos
+
+```bash
+python -m rotaciones.cli --lat 42.03 --lon -93.63 --textura franco_limoso   # salida en salida/resultado.json
+PYTHONPATH=. python tools/generar_ejemplo.py                                # regenera web/ejemplo_*.json
+```
+
+## Publicar en Vercel
+
+Ya está preparado: `app.py` (entrada que Vercel detecta), `vercel.json` (cabeceras de seguridad y caché
+de imágenes), `.vercelignore` y `requirements.txt` solo con lo de producción.
+
+1. **Antes de publicar**, refrescar y precargar los 4 sitios en local (ver "Antes de una demo sin red
+   confiable"). Los datos de `cache/` (≈14 MB, comprimidos con gzip) viajan con el despliegue: Vercel no puede escribir en el disco del
+   proyecto, así que lo que no esté ahí se descarga en vivo (≈30 s por sitio nuevo).
+2. Confirmar que `cache/` está en git (`git status cache/`); `cache/_viejo/` queda fuera.
+3. `vercel` (vista previa) y `vercel --prod`. No hace falta configurar variables.
+4. En el panel de Vercel → Firewall, agregar un límite de peticiones a `/api/*` (ver `SECURITY.md`).
+
+Caché de las APIs: los años cerrados de NASA POWER y los suelos del USDA se guardan para siempre; el
+año en curso se vuelve a pedir cuando la copia tiene más de 3 días (si POWER falla, se usa la última).
+Detalle en `AGENTS.md`, sección "Caché de APIs externas".
+
+Rendimiento medido en local: `/api/evaluar` ≈ 0,8 s la primera vez por sitio y ≈ 5–20 ms después
+(caché en memoria); además la respuesta lleva `s-maxage=6 h` para que la CDN de Vercel la reutilice.
+Página ≈ 140 KB sin comprimir; ilustraciones de cultivos en WebP (≈ 30 KB cada una, antes ≈ 250 KB).
 
 ## Cómo se calcula
 
@@ -90,12 +122,11 @@ por temporada, por cultivo y por rotación. `--textura` y `--mo-alta` lo modific
 
 ## Decisiones tomadas
 
-- Piloto en el Medio Oeste (por defecto 42.03, −93.63, centro de Iowa).
-- Cuatro rotaciones: maíz continuo (actual), maíz–soya, maíz–soya–trigo, maíz–trigo.
+- Piloto en el Medio Oeste: centro de Iowa, sur de Wisconsin, norte de Indiana, este de Nebraska, u otras coordenadas.
+- Rotaciones: maíz continuo, maíz–soya, maíz–soya–trigo, maíz–trigo. Soya o trigo continuos solo como punto de partida, no como alternativa.
 - Humedad foliar: `RH2M ≥ umbral` con barrido; `--ajuste-dosel` como supuesto del usuario.
-- Sin ML ni LLM; los textos salen del motor.
-- Una sola plaga (gusano de la raíz) y una roya como contraste. No añadir más.
-- Stack web.
+- Sin ML ni LLM en el producto; los textos salen del motor.
+- Cinco problemas: moho blanco (soya); mancha gris, mancha de alquitrán, gusano de la raíz y roya del sur (maíz). No añadir más sin reglas con fuente.
 
 ## Año en curso
 
@@ -107,6 +138,7 @@ refrescar, borrar de `cache/` los archivos del año en curso.
 
 - POWER es reanálisis en celdas de ~50 km: no ve el lote ni el dosel. Los niveles son
   comparación relativa y tendencia, no probabilidad.
+- SSURGO describe unidades cartográficas y componentes dominantes; la clase devuelta puede no representar el campo concreto. El mapeo de su clase USDA a las seis texturas del modelo es aproximado.
 - Materia orgánica: ningún dato la mide a escala de lote. Entra como índice cualitativo de
   residuo y como ajuste de sensibilidad (+10 % de agua útil, sin fuente).
 - Balance hídrico: sin escorrentía, cada cultivo evaluado como si se sembrara todos los años,
@@ -117,12 +149,11 @@ refrescar, borrar de `cache/` los archivos del año en curso.
 
 ## Pendiente, en orden
 
-1. Corrida real y los cinco puntos de revisión.
-2. Abrir la página en un navegador y corregir lo que falle (el JS solo pasó revisión de sintaxis).
-   Luego pasar `GEMINI_UX.md` al agente de diseño.
-3. Demo (video de 30 s con subtítulos en inglés o 7 diapositivas) y página del proyecto en
-   inglés, con declaración de uso de IA.
-4. Sustituir supuestos de `cultivos.json` por valores con fuente, o mostrarlos como tales.
+1. Video de 30 s con subtítulos en inglés (o hasta 7 diapositivas) y página del proyecto en inglés.
+2. Declarar el uso de IA en el formulario de envío (código asistido e ilustraciones con marca de agua).
+3. Decidir el año de referencia: 2026 provisional (actual) o 2025, el último completo.
+4. Sustituir supuestos de `data/cultivos.json` por valores con fuente, o mostrarlos como tales.
+5. Elegir licencia del código (no hay `LICENSE` todavía).
 
 ## No hacer
 

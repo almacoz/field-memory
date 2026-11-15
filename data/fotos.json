@@ -1,0 +1,85 @@
+{
+  "_meta": {
+    "carpeta": "web/img"
+  },
+  "moho_blanco_soya": {
+    "archivo": "moho_blanco.jpg",
+    "autor": "Jymm (Wikimedia Commons)",
+    "licencia": {
+      "es": "Dominio público",
+      "en": "Public domain"
+    },
+    "url": "https://commons.wikimedia.org/wiki/File:Sclerotinia_sclerotiorum.jpg",
+    "alt": {
+      "es": "Moho blanco (Sclerotinia sclerotiorum) en un tallo de frijol, otro cultivo que hospeda al mismo hongo",
+      "en": "White mold (Sclerotinia sclerotiorum) on a bean stem, another crop that hosts the same fungus"
+    },
+    "verificado": true,
+    "nota": "Foto tomada en frijol (Phaseolus vulgaris), Bretaña, Francia; no en soya. Mismo patógeno.",
+    "pie": {
+      "es": "Moho blanco en frijol, otro hospedante del mismo hongo",
+      "en": "White mold on bean, another host of the same fungus"
+    }
+  },
+  "mancha_gris_maiz": {
+    "archivo": "mancha_gris.jpg",
+    "autor": "Daren Mueller, Iowa State University, Bugwood.org",
+    "licencia": "CC BY 3.0 US",
+    "url": "https://commons.wikimedia.org/wiki/File:Gray_leaf_spot_Cercospora_zeae-maydis_5465607.png",
+    "alt": {
+      "es": "Hoja de maíz con manchas grises alargadas",
+      "en": "Corn leaf with long gray lesions"
+    },
+    "licencia_url": "https://creativecommons.org/licenses/by/3.0/us/deed.en",
+    "verificado": true
+  },
+  "mancha_alquitran_maiz": {
+    "archivo": "mancha_alquitran.jpg",
+    "autor": "Kiersten Wise, Bugwood.org",
+    "licencia": "CC BY 3.0 US",
+    "url": "https://www.ipmimages.org/browse/detail.cfm?imgnum=5605027",
+    "alt": {
+      "es": "Hoja de maíz con puntos negros en relieve de mancha de alquitrán",
+      "en": "Corn leaf with raised black tar spot stromata"
+    },
+    "verificado": true,
+    "nota": "Bugwood 5605027, University of Kentucky. Foto de campo en maíz.",
+    "licencia_url": "https://creativecommons.org/licenses/by/3.0/us/"
+  },
+  "gusano_raiz_maiz": {
+    "archivo": "gusano_raiz.jpg",
+    "autor": "Tom Hlavaty, USDA-ARS",
+    "licencia": {
+      "es": "Dominio público",
+      "en": "Public domain"
+    },
+    "url": "https://commons.wikimedia.org/wiki/File:Western_corn_rootworm.jpg",
+    "verificado": true,
+    "alt": {
+      "es": "Escarabajo adulto del gusano de la raíz occidental sobre pelos de mazorca de maíz",
+      "en": "Adult western corn rootworm beetle on corn silk"
+    },
+    "pie": {
+      "es": "Adulto sobre pelos de maíz; la larva vive en el suelo y come raíz de maíz",
+      "en": "Adult on corn silk; the larva lives in the soil and feeds on corn roots"
+    },
+    "nota": "USDA-ARS K1289-17, Diabrotica virgifera virgifera. Obra de empleado federal de EE. UU. Alternativa descartada: Bugwood 5361235 (R.L. Croissant, CC BY-NC 3.0 US, tres especies)."
+  },
+  "roya_sur_maiz": {
+    "archivo": "roya_sur.jpg",
+    "autor": "Travis Faske, University of Arkansas - Division of Agriculture, Bugwood.org",
+    "licencia": "CC BY-NC 3.0 US",
+    "licencia_url": "http://creativecommons.org/licenses/by-nc/3.0/us/",
+    "url": "https://www.insectimages.org/browse/detail.cfm?imgnum=5605029",
+    "verificado": true,
+    "alt": {
+      "es": "Pústulas anaranjadas de roya del sur en la hoja que envuelve una mazorca de maíz",
+      "en": "Orange southern rust pustules on the husk leaf of a corn ear"
+    },
+    "pie": {
+      "es": "Pústulas en la hoja que envuelve la mazorca",
+      "en": "Pustules on the husk leaf"
+    },
+    "nota": "Bugwood 5605029, Puccinia polysora. Licencia no comercial: uso permitido en la hackathon; para uso comercial pedir permiso al fotógrafo."
+  }
+}

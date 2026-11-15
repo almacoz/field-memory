@@ -6,6 +6,152 @@
   "datos_hasta": "2025-12-31"
  },
  "datos_sinteticos": true,
+ "cabecera": {
+  "pregunta": "¿Qué siembro el año que viene?",
+  "sub": "Una temporada no termina con la cosecha: en el suelo quedan menos agua y hongos o plagas que pasan el invierno. Con 25 años de clima de la NASA le mostramos qué dejó este año en su zona y qué rotación lo reduce."
+ },
+ "nasa": {
+  "titulo": "Cómo lo sabemos",
+  "texto": "Comparamos cada temporada con las anteriores usando temperatura, humedad y lluvia de NASA POWER. Es un dato de la zona, no de su lote, y no confirma enfermedades.",
+  "detalle": "NASA POWER: 219.144 horas de temperatura y humedad (2001–2025) y 16.436 días de lluvia y temperatura (1981–2025).",
+  "provisional": null,
+  "fuente": "NASA POWER (MERRA-2 / GEOS-IT), celda de ~0.5 x 0.625 grados"
+ },
+ "destacado": {
+  "problema": "mancha_gris_maiz",
+  "nivel": {
+   "clave": "alta",
+   "etiqueta": "Atención alta",
+   "simbolo": "▲"
+  },
+  "titulo": "Mancha gris del maíz es lo que más pesa hoy en su lote.",
+  "texto": "Se acumula. El rastrojo que cuida el suelo también lo guarda.",
+  "que_lo_frena": "Un año sin maíz. El rastrojo puede quedarse y seguir cuidando el suelo.",
+  "cultivo": {
+   "clave": "maiz",
+   "nombre": "Maíz",
+   "img": "img/cultivos/maiz.webp"
+  },
+  "cultivo_texto": "Hoy siembra maíz",
+  "agua": {
+   "texto": "196 de 196 mm",
+   "estado": "El suelo está lleno de agua (al 2025-12-31).",
+   "fraccion_llena": 1.0
+  },
+  "reducen": [
+   {
+    "clave": "maiz_soya",
+    "nombre": "Maíz y soya"
+   },
+   {
+    "clave": "maiz_soya_trigo",
+    "nombre": "Maíz, soya y trigo"
+   },
+   {
+    "clave": "maiz_trigo",
+    "nombre": "Maíz y trigo"
+   }
+  ],
+  "texto_reducen": "Rotaciones que lo reducen: Maíz y soya; Maíz, soya y trigo; Maíz y trigo."
+ },
+ "anio_datos": 2025,
+ "ia_nota": "Las ilustraciones de cultivos fueron generadas con IA (Gemini) y llevan la marca «IA · AI». Las fotos de enfermedades y plagas son reales y muestran su autor y licencia.",
+ "actual": "maiz_continuo",
+ "catalogo": [
+  {
+   "clave": "moho_blanco_soya",
+   "nombre": "Moho blanco de la soya",
+   "foto": {
+    "src": "img/moho_blanco.jpg",
+    "alt": "Moho blanco (Sclerotinia sclerotiorum) en un tallo de frijol, otro cultivo que hospeda al mismo hongo",
+    "url": "https://commons.wikimedia.org/wiki/File:Sclerotinia_sclerotiorum.jpg",
+    "credito": "Moho blanco en frijol, otro hospedante del mismo hongo · Foto: Jymm (Wikimedia Commons) · Dominio público"
+   },
+   "donde_pasa_el_invierno": "Como granos negros duros en el suelo. Aguantan años.",
+   "que_lo_frena": "Varios años sin soya ni otros cultivos de hoja ancha. Arar ayuda poco.",
+   "cultivos": [
+    "Soya"
+   ]
+  },
+  {
+   "clave": "mancha_gris_maiz",
+   "nombre": "Mancha gris del maíz",
+   "foto": {
+    "src": "img/mancha_gris.jpg",
+    "alt": "Hoja de maíz con manchas grises alargadas",
+    "url": "https://commons.wikimedia.org/wiki/File:Gray_leaf_spot_Cercospora_zeae-maydis_5465607.png",
+    "credito": "Foto: Daren Mueller, Iowa State University, Bugwood.org · CC BY 3.0 US"
+   },
+   "donde_pasa_el_invierno": "En el rastrojo de maíz que queda encima del suelo.",
+   "que_lo_frena": "Un año sin maíz. El rastrojo puede quedarse y seguir cuidando el suelo.",
+   "cultivos": [
+    "Maíz"
+   ]
+  },
+  {
+   "clave": "mancha_alquitran_maiz",
+   "nombre": "Mancha de alquitrán",
+   "foto": {
+    "src": "img/mancha_alquitran.jpg",
+    "alt": "Hoja de maíz con puntos negros en relieve de mancha de alquitrán",
+    "url": "https://www.ipmimages.org/browse/detail.cfm?imgnum=5605027",
+    "credito": "Foto: Kiersten Wise, Bugwood.org · CC BY 3.0 US"
+   },
+   "donde_pasa_el_invierno": "En el rastrojo de maíz.",
+   "que_lo_frena": "La ciencia todavía no sabe cuántos años sin maíz hacen falta. Además llega con el viento desde lotes vecinos.",
+   "cultivos": [
+    "Maíz"
+   ]
+  },
+  {
+   "clave": "gusano_raiz_maiz",
+   "nombre": "Gusano de la raíz",
+   "foto": {
+    "src": "img/gusano_raiz.jpg",
+    "alt": "Escarabajo adulto del gusano de la raíz occidental sobre pelos de mazorca de maíz",
+    "url": "https://commons.wikimedia.org/wiki/File:Western_corn_rootworm.jpg",
+    "credito": "Adulto sobre pelos de maíz; la larva vive en el suelo y come raíz de maíz · Foto: Tom Hlavaty, USDA-ARS · Dominio público"
+   },
+   "donde_pasa_el_invierno": "Huevos en el suelo. Al nacer solo comen raíz de maíz.",
+   "que_lo_frena": "Uno o dos años sin maíz. En su zona hay huevos que aguantan dos inviernos.",
+   "cultivos": [
+    "Maíz"
+   ]
+  },
+  {
+   "clave": "roya_sur_maiz",
+   "nombre": "Roya del sur",
+   "foto": {
+    "src": "img/roya_sur.jpg",
+    "alt": "Pústulas anaranjadas de roya del sur en la hoja que envuelve una mazorca de maíz",
+    "url": "https://www.insectimages.org/browse/detail.cfm?imgnum=5605029",
+    "credito": "Pústulas en la hoja que envuelve la mazorca · Foto: Travis Faske, University of Arkansas - Division of Agriculture, Bugwood.org · CC BY-NC 3.0 US"
+   },
+   "donde_pasa_el_invierno": "No se queda en su lote. Llega cada año con el viento del sur.",
+   "que_lo_frena": "Cambiar de cultivo no cambia cuánto llega.",
+   "cultivos": [
+    "Maíz"
+   ]
+  }
+ ],
+ "rotaciones_disponibles": [
+  {
+   "clave": "maiz_continuo",
+   "nombre": "Maíz otra vez"
+  },
+  {
+   "clave": "maiz_soya",
+   "nombre": "Maíz y soya"
+  },
+  {
+   "clave": "maiz_soya_trigo",
+   "nombre": "Maíz, soya y trigo"
+  },
+  {
+   "clave": "maiz_trigo",
+   "nombre": "Maíz y trigo"
+  }
+ ],
  "textos": {
   "aviso": "Esta herramienta ayuda a comparar. No predice enfermedades ni reemplaza lo que usted y su técnico conocen del lote.",
   "leyenda": "Los niveles comparan opciones entre sí; no son la probabilidad de que aparezca la enfermedad.",
@@ -16,8 +162,57 @@
    "deficit_mm": 0,
    "capacidad_mm": 196,
    "fraccion_llena": 1.0,
-   "texto_estado": "Faltan 0 mm para llenar el suelo (2025-12-31).",
-   "texto_anio": "En 2025 hubo 51 días con sed para maíz; lo normal son 44.8.",
+   "texto_tanque": "196 de 196 mm",
+   "texto_estado": "El suelo está lleno de agua (al 2025-12-31).",
+   "texto_anio": "En 2025 hubo 51 días con sed para maíz; lo normal son 45.",
+   "serie": {
+    "1981": 63,
+    "1982": 41,
+    "1983": 48,
+    "1984": 0,
+    "1985": 51,
+    "1986": 42,
+    "1987": 26,
+    "1988": 51,
+    "1989": 55,
+    "1990": 85,
+    "1991": 77,
+    "1992": 77,
+    "1993": 30,
+    "1994": 12,
+    "1995": 4,
+    "1996": 41,
+    "1997": 14,
+    "1998": 44,
+    "1999": 58,
+    "2000": 61,
+    "2001": 51,
+    "2002": 32,
+    "2003": 63,
+    "2004": 42,
+    "2005": 53,
+    "2006": 34,
+    "2007": 32,
+    "2008": 70,
+    "2009": 69,
+    "2010": 42,
+    "2011": 34,
+    "2012": 70,
+    "2013": 41,
+    "2014": 48,
+    "2015": 14,
+    "2016": 48,
+    "2017": 56,
+    "2018": 50,
+    "2019": 59,
+    "2020": 31,
+    "2021": 0,
+    "2022": 33,
+    "2023": 50,
+    "2024": 65,
+    "2025": 51
+   },
+   "anio": 2025,
    "textura": {
     "clave": "franco_limoso",
     "nombre": "Franco limoso",
@@ -27,133 +222,37 @@
     "nombre_mostrar": "Franco limoso"
    },
    "limites": [
-    "Lluvia y temperatura de una celda de ~50 km; no es el lote.",
-    "Toda la lluvia infiltra (sin escorrentia): subestima el estres tras lluvias intensas.",
-    "Cada cultivo se evalua como si se sembrara todos los anios; sin arrastre entre cultivos.",
-    "Curvas Kc mensuales y profundidad de raiz fija: supuestos.",
-    "El ajuste por materia organica es un supuesto de sensibilidad, no una medicion."
-   ]
+    "Lluvia y temperatura de una celda de unos 50 km; no es el lote.",
+    "Toda la lluvia entra al suelo (sin escurrimiento): con lluvias fuertes puede subestimar la sed.",
+    "Cada cultivo se calcula como si se sembrara todos los años, sin arrastre entre cultivos.",
+    "Profundidad de raíz y coeficientes del cultivo (Kc) fijos: son supuestos.",
+    "El ajuste por materia orgánica es un supuesto de sensibilidad, no una medición."
+   ],
+   "texto_metodo": "Es una estimación: se calcula con la lluvia y la temperatura diarias de NASA POWER y con parámetros del cultivo y del suelo. No mide la humedad de su lote.",
+   "rango_dias": [
+    36,
+    61
+   ],
+   "texto_rango": "Según cuánta agua guarde su suelo (110–180 mm por metro para franco limoso), en 2025 serían entre 36 y 61 días con sed."
   },
   "tarjetas": [
    {
-    "clave": "gusano_raiz_maiz",
-    "nombre": "Gusano de la raíz",
+    "clave": "mancha_gris_maiz",
+    "nombre": "Mancha gris del maíz",
+    "nombre_corto": "Mancha gris",
     "nivel": {
      "clave": "alta",
      "etiqueta": "Atención alta",
      "simbolo": "▲"
     },
-    "donde_pasa_el_invierno": "Huevos en el suelo. Al nacer solo comen raíz de maíz.",
-    "este_anio": "No medimos el clima para este problema. El aviso sale solo del historial de cultivos.",
-    "este_anio_dato": null,
-    "que_lo_frena": "Uno o dos años sin maíz. En su zona hay huevos que aguantan dos inviernos.",
-    "pregunta": "¿Vio maíz caído o raíces comidas este año?",
-    "tecnico": "si en su zona el gusano pone huevos también en soya.",
-    "fuentes": [
-     "https://cornrootworm.extension.iastate.edu/basics/life-cycle",
-     "https://crops.extension.iastate.edu/cropnews/2015/08/corn-rootworm-management-update"
-    ],
-    "supuestos": [],
-    "lagunas": [
-     "Clima no evaluado: no hay regla climatica con fuente para este insecto.",
-     "Variante de soya del gusano occidental: pone huevos en soya y anula la rotacion maiz-soya; reportada en Illinois, Indiana y otros estados. Verificar presencia local.",
-     "Diapausa extendida del gusano norteno: puede daniar maiz de primer anio tras soya."
-    ]
-   },
-   {
-    "clave": "mancha_alquitran_maiz",
-    "nombre": "Mancha de alquitrán",
-    "nivel": {
-     "clave": "no_evaluable",
-     "etiqueta": "No se sabe",
-     "simbolo": "?"
-    },
-    "donde_pasa_el_invierno": "En el rastrojo de maíz.",
-    "este_anio": "32 días con clima a su favor en 2025. De 25 años medidos, 9 fueron peores.",
-    "este_anio_dato": {
-     "anio": 2025,
-     "dias": 32,
-     "anios_medidos": 25,
-     "anios_peores": 9,
-     "serie": {
-      "2001": 35,
-      "2002": 41,
-      "2003": 29,
-      "2004": 31,
-      "2005": 31,
-      "2006": 27,
-      "2007": 38,
-      "2008": 36,
-      "2009": 25,
-      "2010": 35,
-      "2011": 30,
-      "2012": 29,
-      "2013": 30,
-      "2014": 41,
-      "2015": 32,
-      "2016": 29,
-      "2017": 32,
-      "2018": 33,
-      "2019": 39,
-      "2020": 28,
-      "2021": 37,
-      "2022": 30,
-      "2023": 31,
-      "2024": 30,
-      "2025": 32
-     }
-    },
-    "que_lo_frena": "La ciencia todavía no sabe cuántos años sin maíz hacen falta. Además llega con el viento desde lotes vecinos.",
-    "pregunta": "¿Vio puntos negros en relieve en las hojas del maíz este año?",
-    "tecnico": "si hubo mancha de alquitrán cerca este año.",
-    "fuentes": [
-     "https://cropprotectionnetwork.org/encyclopedia/tar-spot-of-corn",
-     "https://cropprotectionnetwork.org/publications/an-overview-of-tar-spot-archived",
-     "https://cropprotectionnetwork.org/web-books/tar-spot-of-corn",
-     "https://www.canr.msu.edu/irrigation/upoads/files/TelenkoCropDiseasesMichiana.24.pdf"
-    ],
-    "supuestos": [
-     "ventana susceptible"
-    ],
-    "lagunas": [
-     "Evidencia contradictoria sobre humedad: fuentes clasicas piden HR mayor de 75 %; el estudio de 2023 observo desarrollo con HR menor de 90 % durante 2-3 semanas y freno con humedad excesiva. El proxy horario de HR puede ir en sentido contrario en el extremo alto.",
-     "Eficacia de rotacion desconocida: el motor no asigna presion de inoculo.",
-     "Riego por aspersion aumenta mucho el riesgo y el motor no lo cuantifica."
-    ]
-   },
-   {
-    "clave": "roya_sur_maiz",
-    "nombre": "Roya del sur",
-    "nivel": {
-     "clave": "no_depende_de_la_rotacion",
-     "etiqueta": "Viene de fuera",
-     "simbolo": "→"
-    },
-    "donde_pasa_el_invierno": "No se queda en su lote. Llega cada año con el viento del sur.",
-    "este_anio": "No medimos el clima para este problema. El aviso sale solo del historial de cultivos.",
-    "este_anio_dato": null,
-    "que_lo_frena": "Cambiar de cultivo no cambia este riesgo.",
-    "pregunta": null,
-    "tecnico": "los avisos regionales de roya en temporada.",
-    "fuentes": [
-     "https://farmdocdaily.illinois.edu/?p=25833",
-     "https://fssystem.com/Resource-Center/Resource-Detail/common-and-southern-rust-of-corn"
-    ],
-    "supuestos": [],
-    "lagunas": [
-     "Clima no evaluado. Incluida como caso de contraste: un problema que ninguna rotacion resuelve."
-    ]
-   },
-   {
-    "clave": "mancha_gris_maiz",
-    "nombre": "Mancha gris del maíz",
-    "nivel": {
-     "clave": "baja",
-     "etiqueta": "Atención baja",
-     "simbolo": "▼"
+    "foto": {
+     "src": "img/mancha_gris.jpg",
+     "alt": "Hoja de maíz con manchas grises alargadas",
+     "url": "https://commons.wikimedia.org/wiki/File:Gray_leaf_spot_Cercospora_zeae-maydis_5465607.png",
+     "credito": "Foto: Daren Mueller, Iowa State University, Bugwood.org · CC BY 3.0 US"
     },
     "donde_pasa_el_invierno": "En el rastrojo de maíz que queda encima del suelo.",
-    "este_anio": "0 días con clima a su favor en 2025. De 25 años medidos, 0 fueron peores.",
+    "este_anio": "Ningún día con clima a su favor en 2025.",
     "este_anio_dato": {
      "anio": 2025,
      "dias": 0,
@@ -185,9 +284,37 @@
       "2023": 0,
       "2024": 0,
       "2025": 0
+     },
+     "tendencia": null
+    },
+    "tendencia": null,
+    "que_lo_frena": "Un año sin maíz. El rastrojo puede quedarse y seguir cuidando el suelo.",
+    "por_que": [
+     "Se acumula. El rastrojo que cuida el suelo también lo guarda."
+    ],
+    "calculo": {
+     "base": {
+      "clave": "alta",
+      "etiqueta": "Atención alta",
+      "simbolo": "▲"
+     },
+     "pasos": [
+      {
+       "titulo": "Por el clima del sitio",
+       "texto": "el año no fue extremo para este sitio",
+       "origen": "clima"
+      }
+     ],
+     "final": {
+      "clave": "alta",
+      "etiqueta": "Atención alta",
+      "simbolo": "▲"
+     },
+     "titulos": {
+      "base": "Por la rotación",
+      "final": "Nivel que se muestra"
      }
     },
-    "que_lo_frena": "Un año sin maíz. El rastrojo puede quedarse y seguir cuidando el suelo.",
     "pregunta": "¿Vio manchas grises alargadas en las hojas del maíz este año?",
     "tecnico": "híbridos tolerantes para su zona.",
     "fuentes": [
@@ -202,6 +329,409 @@
      "Las fuentes discrepan en el umbral de HR (90 % frente a mas de 95 %) y en el rango termico.",
      "En siembra directa puede hacer falta mas de un anio fuera de maiz."
     ]
+   },
+   {
+    "clave": "gusano_raiz_maiz",
+    "nombre": "Gusano de la raíz",
+    "nombre_corto": "Gusano de raíz",
+    "nivel": {
+     "clave": "alta",
+     "etiqueta": "Atención alta",
+     "simbolo": "▲"
+    },
+    "foto": {
+     "src": "img/gusano_raiz.jpg",
+     "alt": "Escarabajo adulto del gusano de la raíz occidental sobre pelos de mazorca de maíz",
+     "url": "https://commons.wikimedia.org/wiki/File:Western_corn_rootworm.jpg",
+     "credito": "Adulto sobre pelos de maíz; la larva vive en el suelo y come raíz de maíz · Foto: Tom Hlavaty, USDA-ARS · Dominio público"
+    },
+    "donde_pasa_el_invierno": "Huevos en el suelo. Al nacer solo comen raíz de maíz.",
+    "este_anio": "No medimos el clima para este problema. El aviso sale solo del historial de cultivos.",
+    "este_anio_dato": null,
+    "tendencia": null,
+    "que_lo_frena": "Uno o dos años sin maíz. En su zona hay huevos que aguantan dos inviernos.",
+    "por_que": [
+     "Los huevos de este año nacen sobre su mismo cultivo."
+    ],
+    "calculo": {
+     "base": {
+      "clave": "alta",
+      "etiqueta": "Atención alta",
+      "simbolo": "▲"
+     },
+     "pasos": [
+      {
+       "titulo": "Por el clima del sitio",
+       "texto": "no hay regla de clima con fuente para este problema",
+       "origen": "clima"
+      }
+     ],
+     "final": {
+      "clave": "alta",
+      "etiqueta": "Atención alta",
+      "simbolo": "▲"
+     },
+     "titulos": {
+      "base": "Por la rotación",
+      "final": "Nivel que se muestra"
+     }
+    },
+    "pregunta": "¿Vio maíz caído o raíces comidas este año?",
+    "tecnico": "si en su zona el gusano pone huevos también en soya.",
+    "fuentes": [
+     "https://cornrootworm.extension.iastate.edu/basics/life-cycle",
+     "https://crops.extension.iastate.edu/cropnews/2015/08/corn-rootworm-management-update"
+    ],
+    "supuestos": [],
+    "lagunas": [
+     "Clima no evaluado: no hay regla climatica con fuente para este insecto.",
+     "Variante de soya del gusano occidental: pone huevos en soya y anula la rotacion maiz-soya; reportada en Illinois, Indiana y otros estados. Verificar presencia local.",
+     "Diapausa extendida del gusano norteno: puede daniar maiz de primer anio tras soya."
+    ]
+   },
+   {
+    "clave": "mancha_alquitran_maiz",
+    "nombre": "Mancha de alquitrán",
+    "nombre_corto": "Alquitrán",
+    "nivel": {
+     "clave": "no_evaluable",
+     "etiqueta": "Rotar: efecto incierto",
+     "simbolo": "?"
+    },
+    "foto": {
+     "src": "img/mancha_alquitran.jpg",
+     "alt": "Hoja de maíz con puntos negros en relieve de mancha de alquitrán",
+     "url": "https://www.ipmimages.org/browse/detail.cfm?imgnum=5605027",
+     "credito": "Foto: Kiersten Wise, Bugwood.org · CC BY 3.0 US"
+    },
+    "donde_pasa_el_invierno": "En el rastrojo de maíz.",
+    "este_anio": "32 días con clima a su favor en 2025. 9 de los 25 años medidos fueron peores.",
+    "este_anio_dato": {
+     "anio": 2025,
+     "dias": 32,
+     "anios_medidos": 25,
+     "anios_peores": 9,
+     "serie": {
+      "2001": 35,
+      "2002": 41,
+      "2003": 29,
+      "2004": 31,
+      "2005": 31,
+      "2006": 27,
+      "2007": 38,
+      "2008": 36,
+      "2009": 25,
+      "2010": 35,
+      "2011": 30,
+      "2012": 29,
+      "2013": 30,
+      "2014": 41,
+      "2015": 32,
+      "2016": 29,
+      "2017": 32,
+      "2018": 33,
+      "2019": 39,
+      "2020": 28,
+      "2021": 37,
+      "2022": 30,
+      "2023": 31,
+      "2024": 30,
+      "2025": 32
+     },
+     "tendencia": "sin_tendencia"
+    },
+    "tendencia": "En 25 años no hay una tendencia clara.",
+    "que_lo_frena": "La ciencia todavía no sabe cuántos años sin maíz hacen falta. Además llega con el viento desde lotes vecinos.",
+    "por_que": [
+     "No se sabe cuántos años sin su cultivo hacen falta."
+    ],
+    "calculo": null,
+    "pregunta": "¿Vio puntos negros en relieve en las hojas del maíz este año?",
+    "tecnico": "si hubo mancha de alquitrán cerca este año.",
+    "fuentes": [
+     "https://cropprotectionnetwork.org/encyclopedia/tar-spot-of-corn",
+     "https://cropprotectionnetwork.org/publications/an-overview-of-tar-spot-archived",
+     "https://cropprotectionnetwork.org/web-books/tar-spot-of-corn",
+     "https://www.canr.msu.edu/irrigation/upoads/files/TelenkoCropDiseasesMichiana.24.pdf"
+    ],
+    "supuestos": [
+     "ventana susceptible"
+    ],
+    "lagunas": [
+     "Evidencia contradictoria sobre humedad: fuentes clasicas piden HR mayor de 75 %; el estudio de 2023 observo desarrollo con HR menor de 90 % durante 2-3 semanas y freno con humedad excesiva. El proxy horario de HR puede ir en sentido contrario en el extremo alto.",
+     "Eficacia de rotacion desconocida: el motor no asigna presion de inoculo.",
+     "Riego por aspersion aumenta mucho el riesgo y el motor no lo cuantifica."
+    ]
+   },
+   {
+    "clave": "roya_sur_maiz",
+    "nombre": "Roya del sur",
+    "nombre_corto": "Roya",
+    "nivel": {
+     "clave": "no_depende_de_la_rotacion",
+     "etiqueta": "Viene de fuera",
+     "simbolo": "→"
+    },
+    "foto": {
+     "src": "img/roya_sur.jpg",
+     "alt": "Pústulas anaranjadas de roya del sur en la hoja que envuelve una mazorca de maíz",
+     "url": "https://www.insectimages.org/browse/detail.cfm?imgnum=5605029",
+     "credito": "Pústulas en la hoja que envuelve la mazorca · Foto: Travis Faske, University of Arkansas - Division of Agriculture, Bugwood.org · CC BY-NC 3.0 US"
+    },
+    "donde_pasa_el_invierno": "No se queda en su lote. Llega cada año con el viento del sur.",
+    "este_anio": "No medimos el clima para este problema. El aviso sale solo del historial de cultivos.",
+    "este_anio_dato": null,
+    "tendencia": null,
+    "que_lo_frena": "Cambiar de cultivo no cambia cuánto llega.",
+    "por_que": [],
+    "calculo": null,
+    "pregunta": null,
+    "tecnico": "los avisos regionales de roya en temporada.",
+    "fuentes": [
+     "https://farmdocdaily.illinois.edu/?p=25833",
+     "https://fssystem.com/Resource-Center/Resource-Detail/common-and-southern-rust-of-corn"
+    ],
+    "supuestos": [],
+    "lagunas": [
+     "Clima no evaluado. Incluida como caso de contraste: un problema que ninguna rotacion resuelve."
+    ]
+   }
+  ]
+ },
+ "matriz": {
+  "titulo_opcion": "Opción",
+  "columnas": [
+   {
+    "clave": "moho_blanco_soya",
+    "titulo": "Moho blanco"
+   },
+   {
+    "clave": "mancha_gris_maiz",
+    "titulo": "Mancha gris"
+   },
+   {
+    "clave": "mancha_alquitran_maiz",
+    "titulo": "Alquitrán"
+   },
+   {
+    "clave": "gusano_raiz_maiz",
+    "titulo": "Gusano de raíz"
+   }
+  ],
+  "titulo_agua": "Días con sed por temporada",
+  "titulo_suelo": "Suelo",
+  "filas": [
+   {
+    "clave": "maiz_continuo",
+    "nombre": "Maíz otra vez",
+    "es_actual": true,
+    "secuencia": [
+     {
+      "clave": "maiz",
+      "nombre": "Maíz",
+      "img": "img/cultivos/maiz.webp"
+     }
+    ],
+    "celdas": [
+     {
+      "problema": "moho_blanco_soya",
+      "nivel": {
+       "clave": "sin_hospedante",
+       "etiqueta": "No aplica",
+       "simbolo": "–"
+      }
+     },
+     {
+      "problema": "mancha_gris_maiz",
+      "nivel": {
+       "clave": "alta",
+       "etiqueta": "Atención alta",
+       "simbolo": "▲"
+      }
+     },
+     {
+      "problema": "mancha_alquitran_maiz",
+      "nivel": {
+       "clave": "no_evaluable",
+       "etiqueta": "Rotar: efecto incierto",
+       "simbolo": "?"
+      }
+     },
+     {
+      "problema": "gusano_raiz_maiz",
+      "nivel": {
+       "clave": "alta",
+       "etiqueta": "Atención alta",
+       "simbolo": "▲"
+      }
+     }
+    ],
+    "agua_dias": 45,
+    "suelo": "sin leguminosa; descubierto en invierno"
+   },
+   {
+    "clave": "maiz_soya",
+    "nombre": "Maíz y soya",
+    "es_actual": false,
+    "secuencia": [
+     {
+      "clave": "maiz",
+      "nombre": "Maíz",
+      "img": "img/cultivos/maiz.webp"
+     },
+     {
+      "clave": "soya",
+      "nombre": "Soya",
+      "img": "img/cultivos/soya.webp"
+     }
+    ],
+    "celdas": [
+     {
+      "problema": "moho_blanco_soya",
+      "nivel": {
+       "clave": "alta",
+       "etiqueta": "Atención alta",
+       "simbolo": "▲"
+      }
+     },
+     {
+      "problema": "mancha_gris_maiz",
+      "nivel": {
+       "clave": "baja",
+       "etiqueta": "Atención baja",
+       "simbolo": "▼"
+      }
+     },
+     {
+      "problema": "mancha_alquitran_maiz",
+      "nivel": {
+       "clave": "no_evaluable",
+       "etiqueta": "Rotar: efecto incierto",
+       "simbolo": "?"
+      }
+     },
+     {
+      "problema": "gusano_raiz_maiz",
+      "nivel": {
+       "clave": "media",
+       "etiqueta": "Atención media",
+       "simbolo": "●"
+      }
+     }
+    ],
+    "agua_dias": 46,
+    "suelo": "aporta nitrógeno; descubierto en invierno"
+   },
+   {
+    "clave": "maiz_soya_trigo",
+    "nombre": "Maíz, soya y trigo",
+    "es_actual": false,
+    "secuencia": [
+     {
+      "clave": "maiz",
+      "nombre": "Maíz",
+      "img": "img/cultivos/maiz.webp"
+     },
+     {
+      "clave": "soya",
+      "nombre": "Soya",
+      "img": "img/cultivos/soya.webp"
+     },
+     {
+      "clave": "trigo",
+      "nombre": "Trigo de invierno",
+      "img": "img/cultivos/trigo.webp"
+     }
+    ],
+    "celdas": [
+     {
+      "problema": "moho_blanco_soya",
+      "nivel": {
+       "clave": "media",
+       "etiqueta": "Atención media",
+       "simbolo": "●"
+      }
+     },
+     {
+      "problema": "mancha_gris_maiz",
+      "nivel": {
+       "clave": "baja",
+       "etiqueta": "Atención baja",
+       "simbolo": "▼"
+      }
+     },
+     {
+      "problema": "mancha_alquitran_maiz",
+      "nivel": {
+       "clave": "no_evaluable",
+       "etiqueta": "Rotar: efecto incierto",
+       "simbolo": "?"
+      }
+     },
+     {
+      "problema": "gusano_raiz_maiz",
+      "nivel": {
+       "clave": "baja",
+       "etiqueta": "Atención baja",
+       "simbolo": "▼"
+      }
+     }
+    ],
+    "agua_dias": 35,
+    "suelo": "aporta nitrógeno; cubierto 1 de 3 inviernos"
+   },
+   {
+    "clave": "maiz_trigo",
+    "nombre": "Maíz y trigo",
+    "es_actual": false,
+    "secuencia": [
+     {
+      "clave": "maiz",
+      "nombre": "Maíz",
+      "img": "img/cultivos/maiz.webp"
+     },
+     {
+      "clave": "trigo",
+      "nombre": "Trigo de invierno",
+      "img": "img/cultivos/trigo.webp"
+     }
+    ],
+    "celdas": [
+     {
+      "problema": "moho_blanco_soya",
+      "nivel": {
+       "clave": "sin_hospedante",
+       "etiqueta": "No aplica",
+       "simbolo": "–"
+      }
+     },
+     {
+      "problema": "mancha_gris_maiz",
+      "nivel": {
+       "clave": "baja",
+       "etiqueta": "Atención baja",
+       "simbolo": "▼"
+      }
+     },
+     {
+      "problema": "mancha_alquitran_maiz",
+      "nivel": {
+       "clave": "no_evaluable",
+       "etiqueta": "Rotar: efecto incierto",
+       "simbolo": "?"
+      }
+     },
+     {
+      "problema": "gusano_raiz_maiz",
+      "nivel": {
+       "clave": "media",
+       "etiqueta": "Atención media",
+       "simbolo": "●"
+      }
+     }
+    ],
+    "agua_dias": 29,
+    "suelo": "sin leguminosa; cubierto 1 de 2 inviernos"
    }
   ]
  },
@@ -209,9 +739,17 @@
   {
    "clave": "maiz_continuo",
    "nombre": "Maíz otra vez",
+   "secuencia": [
+    {
+     "clave": "maiz",
+     "nombre": "Maíz",
+     "img": "img/cultivos/maiz.webp"
+    }
+   ],
    "es_actual": true,
    "lineas": [
     {
+     "problema": "mancha_gris_maiz",
      "titulo": "Mancha gris del maíz",
      "nivel": {
       "clave": "alta",
@@ -221,15 +759,17 @@
      "texto": "se acumula. El rastrojo que cuida el suelo también lo guarda."
     },
     {
+     "problema": "mancha_alquitran_maiz",
      "titulo": "Mancha de alquitrán",
      "nivel": {
       "clave": "no_evaluable",
-      "etiqueta": "No se sabe",
+      "etiqueta": "Rotar: efecto incierto",
       "simbolo": "?"
      },
      "texto": "no se sabe cuántos años sin su cultivo hacen falta."
     },
     {
+     "problema": "gusano_raiz_maiz",
      "titulo": "Gusano de la raíz",
      "nivel": {
       "clave": "alta",
@@ -239,9 +779,16 @@
      "texto": "los huevos de este año nacen sobre su mismo cultivo."
     },
     {
+     "problema": null,
      "titulo": "Agua",
      "nivel": null,
-     "texto": "44.8 días con sed por temporada en suelo franco limoso."
+     "texto": "45 días con sed por temporada en suelo franco limoso."
+    },
+    {
+     "problema": null,
+     "titulo": "Suelo",
+     "nivel": null,
+     "texto": "Sin leguminosa; descubierto en invierno."
     }
    ],
    "lo_bueno": "No cambia máquinas ni comprador.",
@@ -252,17 +799,35 @@
     "Roya del sur: llega por viento cada anio; ninguna rotacion cambia este riesgo."
    ],
    "orden": {
-    "sanidad": 8,
-    "agua": 44.8,
-    "suelo": -1.0
+    "sanidad": 200,
+    "agua": 45,
+    "suelo": -0.0
+   },
+   "criterios": {
+    "sanidad": "Problemas en atención alta: 2 · en media: 0",
+    "agua": "45 días con sed por temporada",
+    "suelo": "Sin leguminosa; descubierto en invierno"
    }
   },
   {
    "clave": "maiz_soya",
    "nombre": "Maíz y soya",
+   "secuencia": [
+    {
+     "clave": "maiz",
+     "nombre": "Maíz",
+     "img": "img/cultivos/maiz.webp"
+    },
+    {
+     "clave": "soya",
+     "nombre": "Soya",
+     "img": "img/cultivos/soya.webp"
+    }
+   ],
    "es_actual": false,
    "lineas": [
     {
+     "problema": "moho_blanco_soya",
      "titulo": "Moho blanco de la soya",
      "nivel": {
       "clave": "alta",
@@ -272,24 +837,27 @@
      "texto": "vive años en el suelo y esta rotación le da poco descanso."
     },
     {
+     "problema": "mancha_gris_maiz",
      "titulo": "Mancha gris del maíz",
      "nivel": {
       "clave": "baja",
       "etiqueta": "Atención baja",
       "simbolo": "▼"
      },
-     "texto": "1 año(s) sin su cultivo lo frenan."
+     "texto": "1 año sin su cultivo lo frena."
     },
     {
+     "problema": "mancha_alquitran_maiz",
      "titulo": "Mancha de alquitrán",
      "nivel": {
       "clave": "no_evaluable",
-      "etiqueta": "No se sabe",
+      "etiqueta": "Rotar: efecto incierto",
       "simbolo": "?"
      },
      "texto": "no se sabe cuántos años sin su cultivo hacen falta."
     },
     {
+     "problema": "gusano_raiz_maiz",
      "titulo": "Gusano de la raíz",
      "nivel": {
       "clave": "media",
@@ -299,9 +867,16 @@
      "texto": "baja, pero no desaparece: puede aguantar hasta 2 años."
     },
     {
+     "problema": null,
      "titulo": "Agua",
      "nivel": null,
-     "texto": "46.2 días con sed por temporada en suelo franco limoso."
+     "texto": "46 días con sed por temporada en suelo franco limoso."
+    },
+    {
+     "problema": null,
+     "titulo": "Suelo",
+     "nivel": null,
+     "texto": "Aporta nitrógeno; descubierto en invierno."
     }
    ],
    "lo_bueno": "La soya aporta nitrógeno al suelo.",
@@ -313,17 +888,40 @@
     "Roya del sur: llega por viento cada anio; ninguna rotacion cambia este riesgo."
    ],
    "orden": {
-    "sanidad": 8,
-    "agua": 46.2,
-    "suelo": -2.5
+    "sanidad": 101,
+    "agua": 46,
+    "suelo": -0.05
+   },
+   "criterios": {
+    "sanidad": "Problemas en atención alta: 1 · en media: 1",
+    "agua": "46 días con sed por temporada",
+    "suelo": "Aporta nitrógeno; descubierto en invierno"
    }
   },
   {
    "clave": "maiz_soya_trigo",
    "nombre": "Maíz, soya y trigo",
+   "secuencia": [
+    {
+     "clave": "maiz",
+     "nombre": "Maíz",
+     "img": "img/cultivos/maiz.webp"
+    },
+    {
+     "clave": "soya",
+     "nombre": "Soya",
+     "img": "img/cultivos/soya.webp"
+    },
+    {
+     "clave": "trigo",
+     "nombre": "Trigo de invierno",
+     "img": "img/cultivos/trigo.webp"
+    }
+   ],
    "es_actual": false,
    "lineas": [
     {
+     "problema": "moho_blanco_soya",
      "titulo": "Moho blanco de la soya",
      "nivel": {
       "clave": "media",
@@ -333,36 +931,46 @@
      "texto": "baja, pero no desaparece: puede aguantar hasta 8 años."
     },
     {
+     "problema": "mancha_gris_maiz",
      "titulo": "Mancha gris del maíz",
      "nivel": {
       "clave": "baja",
       "etiqueta": "Atención baja",
       "simbolo": "▼"
      },
-     "texto": "2 año(s) sin su cultivo lo frenan."
+     "texto": "2 años sin su cultivo lo frenan."
     },
     {
+     "problema": "mancha_alquitran_maiz",
      "titulo": "Mancha de alquitrán",
      "nivel": {
       "clave": "no_evaluable",
-      "etiqueta": "No se sabe",
+      "etiqueta": "Rotar: efecto incierto",
       "simbolo": "?"
      },
      "texto": "no se sabe cuántos años sin su cultivo hacen falta."
     },
     {
+     "problema": "gusano_raiz_maiz",
      "titulo": "Gusano de la raíz",
      "nivel": {
       "clave": "baja",
       "etiqueta": "Atención baja",
       "simbolo": "▼"
      },
-     "texto": "2 año(s) sin su cultivo lo frenan."
+     "texto": "2 años sin su cultivo lo frenan."
     },
     {
+     "problema": null,
      "titulo": "Agua",
      "nivel": null,
-     "texto": "35.3 días con sed por temporada en suelo franco limoso."
+     "texto": "35 días con sed por temporada en suelo franco limoso."
+    },
+    {
+     "problema": null,
+     "titulo": "Suelo",
+     "nivel": null,
+     "texto": "Aporta nitrógeno; cubierto 1 de 3 inviernos."
     }
    ],
    "lo_bueno": "Suelo cubierto en invierno un año de cada tres.",
@@ -374,35 +982,55 @@
     "Roya del sur: llega por viento cada anio; ninguna rotacion cambia este riesgo."
    ],
    "orden": {
-    "sanidad": 6,
-    "agua": 35.3,
-    "suelo": -3.66
+    "sanidad": 1,
+    "agua": 35,
+    "suelo": -33.033
+   },
+   "criterios": {
+    "sanidad": "Problemas en atención alta: 0 · en media: 1",
+    "agua": "35 días con sed por temporada",
+    "suelo": "Aporta nitrógeno; cubierto 1 de 3 inviernos"
    }
   },
   {
    "clave": "maiz_trigo",
    "nombre": "Maíz y trigo",
+   "secuencia": [
+    {
+     "clave": "maiz",
+     "nombre": "Maíz",
+     "img": "img/cultivos/maiz.webp"
+    },
+    {
+     "clave": "trigo",
+     "nombre": "Trigo de invierno",
+     "img": "img/cultivos/trigo.webp"
+    }
+   ],
    "es_actual": false,
    "lineas": [
     {
+     "problema": "mancha_gris_maiz",
      "titulo": "Mancha gris del maíz",
      "nivel": {
       "clave": "baja",
       "etiqueta": "Atención baja",
       "simbolo": "▼"
      },
-     "texto": "1 año(s) sin su cultivo lo frenan."
+     "texto": "1 año sin su cultivo lo frena."
     },
     {
+     "problema": "mancha_alquitran_maiz",
      "titulo": "Mancha de alquitrán",
      "nivel": {
       "clave": "no_evaluable",
-      "etiqueta": "No se sabe",
+      "etiqueta": "Rotar: efecto incierto",
       "simbolo": "?"
      },
      "texto": "no se sabe cuántos años sin su cultivo hacen falta."
     },
     {
+     "problema": "gusano_raiz_maiz",
      "titulo": "Gusano de la raíz",
      "nivel": {
       "clave": "media",
@@ -412,9 +1040,16 @@
      "texto": "baja, pero no desaparece: puede aguantar hasta 2 años."
     },
     {
+     "problema": null,
      "titulo": "Agua",
      "nivel": null,
-     "texto": "29.2 días con sed por temporada en suelo franco limoso."
+     "texto": "29 días con sed por temporada en suelo franco limoso."
+    },
+    {
+     "problema": null,
+     "titulo": "Suelo",
+     "nivel": null,
+     "texto": "Sin leguminosa; cubierto 1 de 2 inviernos."
     }
    ],
    "lo_bueno": "Sin soya no hay moho blanco; suelo cubierto un invierno de cada dos.",
@@ -425,9 +1060,14 @@
     "Roya del sur: llega por viento cada anio; ninguna rotacion cambia este riesgo."
    ],
    "orden": {
-    "sanidad": 5,
-    "agua": 29.2,
-    "suelo": -2.5
+    "sanidad": 1,
+    "agua": 29,
+    "suelo": -50.0
+   },
+   "criterios": {
+    "sanidad": "Problemas en atención alta: 0 · en media: 1",
+    "agua": "29 días con sed por temporada",
+    "suelo": "Sin leguminosa; cubierto 1 de 2 inviernos"
    }
   }
  ]

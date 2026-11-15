@@ -1,0 +1,33 @@
+# Python
+.venv/
+venv/
+env/
+__pycache__/
+*.py[cod]
+*.egg-info/
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.coverage
+htmlcov/
+
+# Entorno y secretos
+.env
+.env.*
+!.env.example
+
+# Datos descargados. Se versionan los de los sitios de demo (clima NASA POWER comprimido y suelos
+# USDA, ~14 MB) porque Vercel no puede escribir en el disco del proyecto y descargar 27 años en vivo tarda.
+cache/_viejo/
+
+# Salidas locales
+salida/
+
+# Sistema y editores
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/
+*.swp
+*.log
+.vercel

@@ -85,6 +85,50 @@
           "tecnico": "wheat market and nitrogen supply without a legume."
         }
       }
+    },
+    "soya_continua": {
+      "nombre": "Soya continua",
+      "secuencia": [
+        "soya"
+      ],
+      "solo_como_actual": true,
+      "nota": "Solo aparece si el agricultor la declara como actual; no se ofrece como alternativa.",
+      "agricultor": {
+        "es": {
+          "nombre": "Soya otra vez",
+          "lo_bueno": "No cambia máquinas ni comprador.",
+          "el_costo": "El moho blanco y otros problemas de la soya se acumulan en el lote.",
+          "tecnico": "si alguna vez hubo moho blanco y qué variedad tolera mejor."
+        },
+        "en": {
+          "nombre": "Soybean again",
+          "lo_bueno": "No change in equipment or buyer.",
+          "el_costo": "White mold and other soybean problems build up in the field.",
+          "tecnico": "whether the field has had white mold and which variety tolerates it."
+        }
+      }
+    },
+    "trigo_continuo": {
+      "nombre": "Trigo continuo",
+      "secuencia": [
+        "trigo"
+      ],
+      "solo_como_actual": true,
+      "nota": "Solo aparece si el agricultor la declara como actual; no se ofrece como alternativa.",
+      "agricultor": {
+        "es": {
+          "nombre": "Trigo otra vez",
+          "lo_bueno": "Suelo cubierto todos los inviernos.",
+          "el_costo": "Los hongos del rastrojo de trigo se acumulan año tras año.",
+          "tecnico": "enfermedades del rastrojo de trigo en su zona."
+        },
+        "en": {
+          "nombre": "Wheat again",
+          "lo_bueno": "Soil covered every winter.",
+          "el_costo": "Wheat residue diseases build up year after year.",
+          "tecnico": "wheat residue diseases in your area."
+        }
+      }
     }
   }
 }

@@ -9,14 +9,16 @@
         "invierno": "Como granos negros duros en el suelo. Aguantan años.",
         "frena": "Varios años sin soya ni otros cultivos de hoja ancha. Arar ayuda poco.",
         "pregunta": "¿Vio moho blanco en la soya de este lote alguna vez?",
-        "tecnico": "si hubo moho blanco en lotes vecinos."
+        "tecnico": "si hubo moho blanco en lotes vecinos.",
+        "corto": "Moho blanco"
       },
       "en": {
         "name": "Soybean white mold",
         "winter": "As hard black grains in the soil. They last for years.",
         "stops": "Several years without soybean or other broadleaf crops. Tillage helps little.",
         "question": "Have you ever seen white mold on soybean in this field?",
-        "advisor": "whether nearby fields have had white mold."
+        "advisor": "whether nearby fields have had white mold.",
+        "short": "White mold"
       }
     },
     "mancha_gris_maiz": {
@@ -25,14 +27,16 @@
         "invierno": "En el rastrojo de maíz que queda encima del suelo.",
         "frena": "Un año sin maíz. El rastrojo puede quedarse y seguir cuidando el suelo.",
         "pregunta": "¿Vio manchas grises alargadas en las hojas del maíz este año?",
-        "tecnico": "híbridos tolerantes para su zona."
+        "tecnico": "híbridos tolerantes para su zona.",
+        "corto": "Mancha gris"
       },
       "en": {
         "name": "Corn gray leaf spot",
         "winter": "In corn residue left on the soil surface.",
         "stops": "One year without corn. The residue can stay and keep protecting the soil.",
         "question": "Did you see long gray spots on corn leaves this year?",
-        "advisor": "tolerant hybrids for your area."
+        "advisor": "tolerant hybrids for your area.",
+        "short": "Gray leaf spot"
       }
     },
     "mancha_alquitran_maiz": {
@@ -41,14 +45,16 @@
         "invierno": "En el rastrojo de maíz.",
         "frena": "La ciencia todavía no sabe cuántos años sin maíz hacen falta. Además llega con el viento desde lotes vecinos.",
         "pregunta": "¿Vio puntos negros en relieve en las hojas del maíz este año?",
-        "tecnico": "si hubo mancha de alquitrán cerca este año."
+        "tecnico": "si hubo mancha de alquitrán cerca este año.",
+        "corto": "Alquitrán"
       },
       "en": {
         "name": "Corn tar spot",
         "winter": "In corn residue.",
         "stops": "Science does not yet know how many years without corn are needed. It also blows in from nearby fields.",
         "question": "Did you see raised black dots on corn leaves this year?",
-        "advisor": "whether tar spot was reported nearby this year."
+        "advisor": "whether tar spot was reported nearby this year.",
+        "short": "Tar spot"
       }
     },
     "gusano_raiz_maiz": {
@@ -57,30 +63,34 @@
         "invierno": "Huevos en el suelo. Al nacer solo comen raíz de maíz.",
         "frena": "Uno o dos años sin maíz. En su zona hay huevos que aguantan dos inviernos.",
         "pregunta": "¿Vio maíz caído o raíces comidas este año?",
-        "tecnico": "si en su zona el gusano pone huevos también en soya."
+        "tecnico": "si en su zona el gusano pone huevos también en soya.",
+        "corto": "Gusano de raíz"
       },
       "en": {
         "name": "Corn rootworm",
         "winter": "Eggs in the soil. The larvae only eat corn roots.",
         "stops": "One or two years without corn. In your area some eggs last two winters.",
         "question": "Did you see lodged corn or chewed roots this year?",
-        "advisor": "whether rootworm in your area also lays eggs in soybean fields."
+        "advisor": "whether rootworm in your area also lays eggs in soybean fields.",
+        "short": "Rootworm"
       }
     },
     "roya_sur_maiz": {
       "es": {
         "nombre": "Roya del sur",
         "invierno": "No se queda en su lote. Llega cada año con el viento del sur.",
-        "frena": "Cambiar de cultivo no cambia este riesgo.",
+        "frena": "Cambiar de cultivo no cambia cuánto llega.",
         "pregunta": null,
-        "tecnico": "los avisos regionales de roya en temporada."
+        "tecnico": "los avisos regionales de roya en temporada.",
+        "corto": "Roya"
       },
       "en": {
         "name": "Southern rust",
         "winter": "It does not stay in your field. It blows in from the south each year.",
         "stops": "Changing crops does not change this risk.",
         "question": null,
-        "advisor": "regional rust alerts during the season."
+        "advisor": "regional rust alerts during the season.",
+        "short": "Rust"
       }
     }
   },
@@ -89,15 +99,15 @@
       "alta": "Atención alta",
       "media": "Atención media",
       "baja": "Atención baja",
-      "no_evaluable": "No se sabe",
+      "no_evaluable": "Rotar: efecto incierto",
       "no_depende_de_la_rotacion": "Viene de fuera",
-      "este_anio_con": "{d} días con clima a su favor en {anio}. De {n} años medidos, {k} fueron peores.",
+      "este_anio_con": "{d} días con clima a su favor en {anio}. {k} de los {n} años medidos fueron peores.",
       "este_anio_sin": "No medimos el clima para este problema. El aviso sale solo del historial de cultivos.",
       "provisional": " Dato provisional del año en curso.",
       "linea_alta_residuo": "se acumula. El rastrojo que cuida el suelo también lo guarda.",
       "linea_alta_suelo_un_cultivo": "los huevos de este año nacen sobre su mismo cultivo.",
       "linea_alta_suelo_anios": "vive años en el suelo y esta rotación le da poco descanso.",
-      "linea_media": "baja, pero no desaparece: puede aguantar hasta {pers} años.",
+      "linea_media": "baja, pero no desaparece: puede aguantar hasta {pers}.",
       "linea_baja": "{b} año(s) sin su cultivo lo frenan.",
       "linea_no_evaluable": "no se sabe cuántos años sin su cultivo hacen falta.",
       "agua": "Agua",
@@ -105,22 +115,84 @@
       "aviso": "Esta herramienta ayuda a comparar. No predice enfermedades ni reemplaza lo que usted y su técnico conocen del lote.",
       "leyenda": "Los niveles comparan opciones entre sí; no son la probabilidad de que aparezca la enfermedad.",
       "celda": "El dato de la NASA mide una zona de unos 50 km. No ve su lote por separado.",
-      "agua_estado": "Faltan {mm} mm para llenar el suelo ({fecha}).",
-      "agua_anio": "En {anio} hubo {d} días con sed para {cultivo}; lo normal son {m}."
+      "agua_estado": "Al suelo le faltan {mm} mm para estar lleno (al {fecha}).",
+      "agua_anio": "En {anio} hubo {d} días con sed para {cultivo}; lo normal son {m}.",
+      "sin_hospedante": "No aplica",
+      "este_anio_peor": "{d} días con clima a su favor en {anio}: el peor de los {n} años medidos.",
+      "este_anio_cero": "Ningún día con clima a su favor en {anio}.",
+      "tend_sube": "En {n} años, los días a su favor van en aumento.",
+      "tend_baja": "En {n} años, los días a su favor van en descenso.",
+      "tend_sin": "En {n} años no hay una tendencia clara.",
+      "linea_baja_1": "{b} año sin su cultivo lo frena.",
+      "linea_baja_n": "{b} años sin su cultivo lo frenan.",
+      "aj_clima_mas": "Este año el clima le ayudó más de lo normal: queda más en el lote.",
+      "aj_clima_menos": "Este año el clima le ayudó menos de lo normal.",
+      "aj_vio_si": "Usted lo vio en el lote: sube un nivel.",
+      "aj_vio_no": "Usted no lo vio en el lote: baja un nivel.",
+      "agua_tanque": "{hay} de {cap} mm",
+      "agua_estado_lleno": "El suelo está lleno de agua (al {fecha}).",
+      "cab_pregunta": "¿Qué siembro el año que viene?",
+      "cab_sub": "Una temporada no termina con la cosecha: en el suelo quedan menos agua y hongos o plagas que pasan el invierno. Con 25 años de clima de la NASA le mostramos qué dejó este año en su zona y qué rotación lo reduce.",
+      "nasa_titulo": "Cómo lo sabemos",
+      "nasa_texto": "Comparamos cada temporada con las anteriores usando temperatura, humedad y lluvia de NASA POWER. Es un dato de la zona, no de su lote, y no confirma enfermedades.",
+      "nasa_detalle": "NASA POWER: {horas} horas de temperatura y humedad ({h0}–{h1}) y {dias} días de lluvia y temperatura ({d0}–{d1}).",
+      "nasa_prov": "Los datos de {anio} son provisionales y pueden cambiar.",
+      "m_opcion": "Opción",
+      "m_agua": "Días con sed por temporada",
+      "m_suelo": "Suelo",
+      "s_leg": "aporta nitrógeno",
+      "s_noleg": "sin leguminosa",
+      "s_cub": "cubierto {a} de {b} inviernos",
+      "s_nocub": "descubierto en invierno",
+      "sup_clima": "cuánto más inóculo deja un año favorable (ajuste de un nivel)",
+      "dest_peor": "{p}: {anio} fue el peor año de los {n} medidos en su zona.",
+      "dest_alto": "{p}: {anio} estuvo entre los años más favorables de los {n} medidos.",
+      "dest_pesa": "{p} es lo que más pesa hoy en su lote.",
+      "dest_cultivo": "Hoy siembra {cultivo}",
+      "ia_nota": "Las ilustraciones de cultivos fueron generadas con IA (Gemini) y llevan la marca «IA · AI». Las fotos de enfermedades y plagas son reales y muestran su autor y licencia.",
+      "dest_reducen": "Rotaciones que lo reducen: {lista}.",
+      "dest_ninguna": "Ninguna rotación reduce este problema.",
+      "crit_sanidad": "Problemas en atención alta: {a} · en media: {m}",
+      "crit_agua": "{d} días con sed por temporada",
+      "dest_sin_reglas": "Todavía no tenemos reglas de enfermedades para {cultivo} sembrado año tras año.",
+      "dest_sin_reglas_texto": "Las reglas de esta versión cubren problemas de maíz y soya. El agua en el suelo sí se calcula, y puede comparar contra las rotaciones con maíz y soya.",
+      "pers_1": "1 año",
+      "pers_n": "{n} años",
+      "agua_metodo": "Es una estimación: se calcula con la lluvia y la temperatura diarias de NASA POWER y con parámetros del cultivo y del suelo. No mide la humedad de su lote.",
+      "agua_rango": "Según cuánta agua guarde su suelo ({lo}–{hi} mm por metro para {tex}), en {anio} serían entre {a} y {b} días con sed.",
+      "agua_limites": [
+        "Lluvia y temperatura de una celda de unos 50 km; no es el lote.",
+        "Toda la lluvia entra al suelo (sin escurrimiento): con lluvias fuertes puede subestimar la sed.",
+        "Cada cultivo se calcula como si se sembrara todos los años, sin arrastre entre cultivos.",
+        "Profundidad de raíz y coeficientes del cultivo (Kc) fijos: son supuestos.",
+        "El ajuste por materia orgánica es un supuesto de sensibilidad, no una medición."
+      ],
+      "calc_base": "Por la rotación",
+      "calc_clima": "Por el clima del sitio",
+      "calc_vio": "Por lo que usted vio",
+      "calc_final": "Nivel que se muestra",
+      "calc_sin_cambio": "sin cambio",
+      "calc_sube": "sube un nivel",
+      "calc_baja": "baja un nivel",
+      "calc_no_vio": "no respondió",
+      "calc_clima_no": "el año no fue extremo para este sitio",
+      "calc_clima_sin_regla": "no hay regla de clima con fuente para este problema",
+      "calc_tope_max": "(ya estaba en el nivel más alto)",
+      "calc_tope_min": "(ya estaba en el nivel más bajo)"
     },
     "en": {
       "alta": "High attention",
       "media": "Medium attention",
       "baja": "Low attention",
-      "no_evaluable": "Unknown",
+      "no_evaluable": "Rotation: effect unclear",
       "no_depende_de_la_rotacion": "Comes from outside",
-      "este_anio_con": "{d} days of favorable weather in {anio}. Of {n} years measured, {k} were worse.",
+      "este_anio_con": "{d} days of favorable weather in {anio}. {k} of the {n} years measured were worse.",
       "este_anio_sin": "We do not measure weather for this problem. The alert comes only from crop history.",
       "provisional": " Provisional data for the current year.",
       "linea_alta_residuo": "builds up. The residue that protects the soil also shelters it.",
       "linea_alta_suelo_un_cultivo": "this year's eggs hatch onto the same crop.",
       "linea_alta_suelo_anios": "lives for years in the soil and this rotation gives it little rest.",
-      "linea_media": "goes down but does not disappear: it can last up to {pers} years.",
+      "linea_media": "goes down but does not disappear: it can last up to {pers}.",
       "linea_baja": "{b} year(s) without its crop hold it back.",
       "linea_no_evaluable": "nobody knows how many years without its crop are needed.",
       "agua": "Water",
@@ -128,8 +200,70 @@
       "aviso": "This tool helps you compare. It does not predict disease or replace what you and your advisor know about the field.",
       "leyenda": "Levels compare options with each other; they are not the probability of disease.",
       "celda": "NASA data measures an area about 50 km wide. It does not see your field on its own.",
-      "agua_estado": "{mm} mm short of a full soil profile ({fecha}).",
-      "agua_anio": "In {anio} there were {d} thirsty days for {cultivo}; the usual is {m}."
+      "agua_estado": "The soil is {mm} mm short of full (as of {fecha}).",
+      "agua_anio": "In {anio} there were {d} thirsty days for {cultivo}; the usual is {m}.",
+      "sin_hospedante": "Not present",
+      "este_anio_peor": "{d} days of favorable weather in {anio}: the worst of the {n} years measured.",
+      "este_anio_cero": "No days of favorable weather in {anio}.",
+      "tend_sube": "Over {n} years, favorable days are increasing.",
+      "tend_baja": "Over {n} years, favorable days are decreasing.",
+      "tend_sin": "Over {n} years there is no clear trend.",
+      "linea_baja_1": "{b} year without its crop holds it back.",
+      "linea_baja_n": "{b} years without its crop hold it back.",
+      "aj_clima_mas": "This year's weather favored it more than usual: more carries over in the field.",
+      "aj_clima_menos": "This year's weather favored it less than usual.",
+      "aj_vio_si": "You saw it in the field: one level up.",
+      "aj_vio_no": "You did not see it in the field: one level down.",
+      "agua_tanque": "{hay} of {cap} mm",
+      "agua_estado_lleno": "The soil is full of water (as of {fecha}).",
+      "cab_pregunta": "What should I plant next year?",
+      "cab_sub": "A season does not end at harvest: the soil keeps less water, and fungi and pests that overwinter. With 25 years of NASA climate data we show what this year left behind in your area and which rotation reduces it.",
+      "nasa_titulo": "How we know",
+      "nasa_texto": "We compare each season with the ones before it using NASA POWER temperature, humidity and rainfall. It describes your area, not your field, and it does not confirm disease.",
+      "nasa_detalle": "NASA POWER: {horas} hours of temperature and humidity ({h0}–{h1}) and {dias} days of rainfall and temperature ({d0}–{d1}).",
+      "nasa_prov": "Data for {anio} is provisional and may change.",
+      "m_opcion": "Option",
+      "m_agua": "Thirsty days per season",
+      "m_suelo": "Soil",
+      "s_leg": "adds nitrogen",
+      "s_noleg": "no legume",
+      "s_cub": "covered {a} of {b} winters",
+      "s_nocub": "bare in winter",
+      "sup_clima": "how much extra carry-over a favorable year leaves (one-level adjustment)",
+      "dest_peor": "{p}: {anio} was the worst of the {n} years measured in your area.",
+      "dest_alto": "{p}: {anio} was among the most favorable of the {n} years measured.",
+      "dest_pesa": "{p} weighs most on your field today.",
+      "dest_cultivo": "You grow {cultivo} today",
+      "ia_nota": "Crop illustrations were generated with AI (Gemini) and carry the “IA · AI” mark. Disease and pest photos are real and show their author and license.",
+      "dest_reducen": "Rotations that reduce it: {lista}.",
+      "dest_ninguna": "No rotation reduces this problem.",
+      "crit_sanidad": "Problems at high attention: {a} · at medium: {m}",
+      "crit_agua": "{d} thirsty days per season",
+      "dest_sin_reglas": "We don't have disease rules yet for {cultivo} grown year after year.",
+      "dest_sin_reglas_texto": "This version's rules cover corn and soybean problems. Soil water is still calculated, and you can compare against rotations with corn and soybean.",
+      "pers_1": "1 year",
+      "pers_n": "{n} years",
+      "agua_metodo": "This is an estimate: it uses NASA POWER daily rain and temperature plus crop and soil parameters. It does not measure your field's moisture.",
+      "agua_rango": "Depending on how much water your soil holds ({lo}–{hi} mm per meter for {tex}), {anio} would have between {a} and {b} thirsty days.",
+      "agua_limites": [
+        "Rain and temperature for a cell of about 50 km; not the field.",
+        "All rain enters the soil (no runoff): heavy rain can make thirst look lower than it was.",
+        "Each crop is calculated as if planted every year, with no carry-over between crops.",
+        "Root depth and crop coefficients (Kc) are fixed: they are assumptions.",
+        "The organic-matter adjustment is a sensitivity assumption, not a measurement."
+      ],
+      "calc_base": "From the rotation",
+      "calc_clima": "From the site's climate",
+      "calc_vio": "From what you saw",
+      "calc_final": "Level shown",
+      "calc_sin_cambio": "no change",
+      "calc_sube": "one level up",
+      "calc_baja": "one level down",
+      "calc_no_vio": "not answered",
+      "calc_clima_no": "the year was not extreme for this site",
+      "calc_clima_sin_regla": "there is no sourced climate rule for this problem",
+      "calc_tope_max": "(it was already at the highest level)",
+      "calc_tope_min": "(it was already at the lowest level)"
     }
   }
 }

@@ -11,6 +11,8 @@
   "cultivos": {
     "maiz": {
       "nombre": "Maíz",
+      "nombre_en": "corn",
+      "icono": "img/cultivos/maiz.webp",
       "leguminosa": false,
       "demanda_hidrica": 3,
       "aporte_residuo": 3,
@@ -27,11 +29,12 @@
           "9": 0.7
         },
         "tipo_zr_p": "citado"
-      },
-      "nombre_en": "corn"
+      }
     },
     "soya": {
       "nombre": "Soya",
+      "nombre_en": "soybean",
+      "icono": "img/cultivos/soya.webp",
       "leguminosa": true,
       "demanda_hidrica": 2,
       "aporte_residuo": 1,
@@ -48,11 +51,12 @@
           "9": 0.7
         },
         "tipo_zr_p": "supuesto"
-      },
-      "nombre_en": "soybean"
+      }
     },
     "trigo": {
       "nombre": "Trigo de invierno",
+      "nombre_en": "winter wheat",
+      "icono": "img/cultivos/trigo.webp",
       "leguminosa": false,
       "demanda_hidrica": 2,
       "aporte_residuo": 2,
@@ -69,8 +73,7 @@
           "7": 0.4
         },
         "tipo_zr_p": "citado"
-      },
-      "nombre_en": "winter wheat"
+      }
     }
   }
 }

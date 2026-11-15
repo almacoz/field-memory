@@ -1,0 +1,21 @@
+{
+  "fuente": "USDA NRCS Soil Data Access (SSURGO)",
+  "url": "https://sdmdataaccess.nrcs.usda.gov/",
+  "lat": 42.03,
+  "lon": -93.63,
+  "mukey": "411278",
+  "simbolo_mapa": "1314",
+  "unidad_mapa": "Hanlon-Spillville complex, channeled, 0 to 2 percent slopes",
+  "componente_dominante": "Hanlon",
+  "porcentaje_componente": "60",
+  "horizonte_superficial": {
+    "textura_original": "Fine sandy loam",
+    "descripcion": "Fine sandy loam",
+    "profundidad_cm": [
+      "0",
+      "99"
+    ]
+  },
+  "textura_modelo_aproximada": "franco_arenoso",
+  "advertencia": "Dato cartográfico de la unidad de suelo; no es una medición ni una descripción confirmada del lote."
+}

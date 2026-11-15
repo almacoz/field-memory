@@ -1,0 +1,20 @@
+# Lo que no hace falta en el servidor de Vercel
+.venv/
+venv/
+.git/
+.pytest_cache/
+**/__pycache__/
+.env
+.DS_Store
+tests/
+tools/
+salida/
+cache/_viejo/
+HANDOFF_spaceapps_rotaciones.md
+GEMINI_UX.md
+requirements-dev.txt
+AGENTS.md
+CHANGELOG.md
+SECURITY.md
+CREDITS.md
+.vercel/

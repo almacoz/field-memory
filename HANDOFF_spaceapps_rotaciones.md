@@ -1,3 +1,5 @@
+> **Documento histórico** (propuesta inicial del 14-nov). Puede estar desactualizado: la referencia vigente es `README.md` y `AGENTS.md`.
+
 # Handoff: herramienta de rotación de cultivos — NASA Space Apps 2026
 
 Documento para un agente que retoma el trabajo sin haber visto la conversación original.

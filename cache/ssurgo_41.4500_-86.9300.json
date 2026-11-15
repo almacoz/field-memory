@@ -1,0 +1,21 @@
+{
+  "fuente": "USDA NRCS Soil Data Access (SSURGO)",
+  "url": "https://sdmdataaccess.nrcs.usda.gov/",
+  "lat": 41.45,
+  "lon": -86.93,
+  "mukey": "272695",
+  "simbolo_mapa": "TcB",
+  "unidad_mapa": "Tracy sandy loam, 2 to 6 percent slopes",
+  "componente_dominante": "Tracy",
+  "porcentaje_componente": "85",
+  "horizonte_superficial": {
+    "textura_original": "Sandy loam",
+    "descripcion": "Sandy loam",
+    "profundidad_cm": [
+      "0",
+      "23"
+    ]
+  },
+  "textura_modelo_aproximada": "franco_arenoso",
+  "advertencia": "Dato cartográfico de la unidad de suelo; no es una medición ni una descripción confirmada del lote."
+}

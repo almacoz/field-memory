@@ -209,7 +209,7 @@ def test_vista_contrato_y_dos_idiomas():
 def test_respuesta_del_agricultor_cambia_el_nivel():
     antes = {c["clave"]: c["nivel"]["clave"] for c in _vista()["lote_hoy"]["tarjetas"]}
     desp = {c["clave"]: c["nivel"]["clave"] for c in _vista(vio="gusano_raiz_maiz:no")["lote_hoy"]["tarjetas"]}
-    assert antes["gusano_raiz_maiz"] == "alta" and desp["gusano_raiz_maiz"] == "baja"
+    assert antes["gusano_raiz_maiz"] == "alta" and desp["gusano_raiz_maiz"] == "media"
 
 
 def test_api_con_power_simulado(monkeypatch):
@@ -221,9 +221,241 @@ def test_api_con_power_simulado(monkeypatch):
     dfh, dfd = series()
     monkeypatch.setattr(api.power, "horario", lambda *a: dfh)
     monkeypatch.setattr(api.power, "diario", lambda *a: dfd)
+    api._series.cache_clear(); api._evaluar_cache.cache_clear()
     c = TestClient(api.app)
     r = c.get("/api/evaluar", params={"idioma": "en", "textura": "arena"})
     assert r.status_code == 200 and r.json()["vista"]["idioma"] == "en"
     assert c.get("/").status_code == 200
+    assert c.get("/img/cultivos/maiz.webp").status_code == 200
+    assert c.get("/favicon.ico").status_code == 200 and c.get("/manifest.json").status_code == 200
+    assert "s-maxage" in r.headers["cache-control"]
     monkeypatch.setattr(api.power, "horario", lambda *a: (_ for _ in ()).throw(RuntimeError("sin red")))
-    assert c.get("/api/evaluar").status_code == 502
+    api._series.cache_clear(); api._evaluar_cache.cache_clear()
+    r = c.get("/api/evaluar")
+    assert r.status_code == 502 and "sin red" not in r.text  # sin detalles internos
+    api._series.cache_clear(); api._evaluar_cache.cache_clear()
+
+
+# ---------- coherencia de niveles, tabla resumen y selector de cultivo ----------
+
+def _sitio(idioma="es", vio=None, actual=None):
+    import sys
+    sys.path.insert(0, str(Path(__file__).resolve().parent.parent / "tools"))
+    from generar_ejemplo import series
+    from rotaciones.api import evaluar_sitio
+    dfh, dfd = series()
+    return evaluar_sitio(dfh, dfd, idioma=idioma, vio=vio, actual=actual, sintetico=True)["vista"]
+
+
+@pytest.mark.parametrize("vio", [None, "mancha_gris_maiz:si", "gusano_raiz_maiz:no,mancha_gris_maiz:no"])
+def test_un_solo_nivel_en_tarjeta_linea_y_tabla(vio):
+    v = _sitio(vio=vio)
+    tarjeta = {c["clave"]: c["nivel"]["clave"] for c in v["lote_hoy"]["tarjetas"]}
+    op = next(o for o in v["opciones"] if o["es_actual"])
+    fila = next(f for f in v["matriz"]["filas"] if f["es_actual"])
+    for l in op["lineas"]:
+        if l["problema"] in tarjeta:
+            assert l["nivel"]["clave"] == tarjeta[l["problema"]]
+    for c in fila["celdas"]:
+        if c["problema"] in tarjeta:
+            assert c["nivel"]["clave"] == tarjeta[c["problema"]]
+
+
+def test_observacion_sube_o_baja_un_nivel_y_se_explica():
+    base = {l["problema"]: l for o in _sitio()["opciones"] if o["clave"] == "maiz_soya_trigo" for l in o["lineas"]}
+    si = {l["problema"]: l for o in _sitio(vio="gusano_raiz_maiz:si")["opciones"]
+          if o["clave"] == "maiz_soya_trigo" for l in o["lineas"]}
+    assert base["gusano_raiz_maiz"]["nivel"]["clave"] == "baja"
+    assert si["gusano_raiz_maiz"]["nivel"]["clave"] == "media"
+    assert "Usted lo vio" in si["gusano_raiz_maiz"]["texto"]
+    assert "hasta 1 " not in si["gusano_raiz_maiz"]["texto"]
+
+
+def test_selector_de_cultivo_actual_y_tabla():
+    v = _sitio(actual="maiz_soya")
+    assert v["actual"] == "maiz_soya" and len(v["rotaciones_disponibles"]) == 4
+    assert [o["clave"] for o in v["opciones"] if o["es_actual"]] == ["maiz_soya"]
+    m = v["matriz"]
+    assert len(m["filas"]) == 4 and all(len(f["celdas"]) == len(m["columnas"]) for f in m["filas"])
+    assert "roya_sur_maiz" not in [c["clave"] for c in m["columnas"]]
+    sin = [c for f in m["filas"] if f["clave"] == "maiz_continuo" for c in f["celdas"]
+           if c["problema"] == "moho_blanco_soya"]
+    assert sin[0]["nivel"]["clave"] == "sin_hospedante"
+
+
+def test_textos_sin_plurales_rotos_ni_decimales():
+    for idioma in ("es", "en"):
+        v = _sitio(idioma)
+        blob = " ".join(l["texto"] for o in v["opciones"] for l in o["lineas"])
+        blob += " ".join(c["este_anio"] for c in v["lote_hoy"]["tarjetas"]) + v["lote_hoy"]["agua"]["texto_anio"]
+        assert "1 years" not in blob and "1 años" not in blob and "year(s)" not in blob and "año(s)" not in blob
+        import re
+        assert not re.search(r"\d\.\d (días|days|thirsty)", blob)
+        assert v["cabecera"]["pregunta"] and v["nasa"]["texto"]
+
+
+def test_ajuste_por_clima_es_relativo_al_sitio():
+    from rotaciones import comparador as c
+    regla = REGLAS["patogenos"]["mancha_gris_maiz"]
+    def clima(ultimo):
+        serie = {a: (a % 5) for a in range(2001, 2025)}; serie[2025] = ultimo
+        return {"clima_evaluado": True, "umbral_referencia": "90",
+                "por_umbral_hr": {"90": {"dias_favorables_por_anio": serie}}}
+    assert c.posicion_ultimo_anio(clima(20)) == "alto" and c.posicion_ultimo_anio(clima(0)) == "bajo"
+    assert c._ajustes(regla, clima(20), "maiz", None) == [{"origen": "clima", "delta": 1}]
+    assert c._ajustes(regla, clima(20), "soya", None) == []      # sin hospedante este año: no carga
+    assert c._nivel_final("baja", [{"origen": "clima", "delta": 1}, {"origen": "observacion", "delta": 1}]) == "alta"
+
+
+def test_tendencia():
+    sube = motor.tendencia({a: a - 2000 for a in range(2001, 2026)})
+    assert sube["clave"] == "sube" and motor.tendencia({a: 3 for a in range(2001, 2026)})["evaluable"] is False
+
+
+def test_fotos_con_credito_y_solo_si_existe_el_archivo(tmp_path, monkeypatch):
+    from rotaciones import vista
+    fotos = cargar("fotos")
+    for k, f in fotos.items():
+        if k != "_meta":
+            assert k in REGLAS["patogenos"] and f["autor"] and f["licencia"] and f["url"].startswith("https://")
+    monkeypatch.setattr(vista, "_RAIZ", tmp_path)
+    (tmp_path / "data").mkdir(); (tmp_path / "web" / "img").mkdir(parents=True)
+    (tmp_path / "data" / "fotos.json").write_text(json.dumps(fotos), encoding="utf-8")
+    sin = vista._foto("mancha_gris_maiz", "es")          # sin archivo: enlace y crédito, sin imagen
+    assert sin["src"] is None and sin["url"].startswith("https://") and "Daren Mueller" in sin["credito"]
+    (tmp_path / "web" / "img" / "mancha_gris.jpg").write_bytes(b"x")
+    f = vista._foto("mancha_gris_maiz", "en")
+    assert f["src"] == "img/mancha_gris.jpg" and "Daren Mueller" in f["credito"] and "CC BY 3.0" in f["credito"]
+
+
+def test_destacado_sale_de_los_datos_y_secuencia_ilustrada():
+    for idioma in ("es", "en"):
+        v = _sitio(idioma)
+        d = v["destacado"]
+        top = v["lote_hoy"]["tarjetas"][0]
+        assert d["nivel"]["clave"] == top["nivel"]["clave"]
+        nombre = next(c["nombre"] for c in v["lote_hoy"]["tarjetas"] if c["clave"] == d["problema"])
+        assert d["titulo"].startswith(nombre) and d["agua"]["texto"]
+        assert v["ia_nota"]
+        for o in v["opciones"]:
+            assert [c["clave"] for c in o["secuencia"]] == cargar("rotaciones")["rotaciones"][o["clave"]]["secuencia"]
+            assert all(c["img"] in (None, f"img/cultivos/{c['clave']}.png", f"img/cultivos/{c['clave']}.webp") for c in o["secuencia"])
+
+
+def test_destacado_dice_que_rotaciones_reducen_el_problema():
+    v = _sitio("es")
+    d = v["destacado"]
+    nivel_hoy = {"alta": 3, "media": 2, "baja": 1}[d["nivel"]["clave"]]
+    for r in d["reducen"]:
+        op = next(o for o in v["opciones"] if o["clave"] == r["clave"])
+        l = next((l for l in op["lineas"] if l["problema"] == d["problema"]), None)
+        assert l is None or {"alta": 3, "media": 2, "baja": 1}[l["nivel"]["clave"]] < nivel_hoy
+    assert d["texto_reducen"] and v["anio_datos"]
+
+
+def test_ssurgo_lee_nombres_de_columna(monkeypatch, tmp_path):
+    from rotaciones import ssurgo
+    monkeypatch.setattr(ssurgo, "CACHE", tmp_path)
+    class R:
+        def raise_for_status(self): pass
+        def json(self): return {"Table": [["mukey", "musym", "muname", "compname", "comppct_r", "texcl", "hzdept_r", "hzdepb_r"],
+                                          ["123", "L107", "Webster clay loam", "Webster", "90", "Clay loam", "0", "20"]]}
+    R.status_code = 200; R.content = b"x"; R.text = ""
+    enviado = {}
+    def post(url, json=None, data=None, timeout=None): enviado.update(json or data); return R()
+    monkeypatch.setattr(ssurgo.httpx, "post", post)
+    r = ssurgo.consultar(42.03, -93.63, usar_cache=False)
+    assert enviado["format"] == "JSON+COLUMNNAME" and r["textura_modelo_aproximada"] == "franco_arcillo_limoso"
+    # La textura se pide a chtexture (en chorizon no existe esa columna).
+    assert "chtexture" in enviado["query"] and "rvindicator" in enviado["query"]
+
+
+def test_cada_prioridad_ordena_por_un_dato_visible():
+    v = _sitio("es")
+    for o in v["opciones"]:
+        assert set(o["orden"]) == {"sanidad", "agua", "suelo"}
+        assert all(o["criterios"][k] for k in ("sanidad", "agua", "suelo"))
+        a = sum(1 for l in o["lineas"] if l["nivel"] and l["nivel"]["clave"] == "alta")
+        m = sum(1 for l in o["lineas"] if l["nivel"] and l["nivel"]["clave"] == "media")
+        assert o["orden"]["sanidad"] == a * 100 + m and f": {a} " in o["criterios"]["sanidad"]
+
+
+def test_api_suelo_usa_la_funcion_que_existe(monkeypatch):
+    from fastapi.testclient import TestClient
+    from rotaciones import api, ssurgo
+    monkeypatch.setattr(ssurgo, "consultar", lambda lat, lon, timeout=12.0: {"unidad_mapa": "x"})
+    assert TestClient(api.app).get("/api/suelo").json() == {"unidad_mapa": "x"}
+    def sin(lat, lon, timeout=12.0): raise LookupError("nada")
+    monkeypatch.setattr(ssurgo, "consultar", sin)
+    assert TestClient(api.app).get("/api/suelo").status_code == 404
+
+
+def test_monocultivos_solo_aparecen_si_son_los_actuales():
+    claves = [o["clave"] for o in _sitio()["opciones"]]
+    assert "soya_continua" not in claves and "trigo_continuo" not in claves
+    v = _sitio(actual="soya_continua")
+    assert [o["clave"] for o in v["opciones"] if o["es_actual"]] == ["soya_continua"]
+    assert "trigo_continuo" not in [o["clave"] for o in v["opciones"]]
+
+
+def test_trigo_continuo_dice_que_no_hay_reglas():
+    d = _sitio(actual="trigo_continuo")["destacado"]
+    assert d["problema"] is None and d["nivel"] is None and "trigo" in d["titulo"]
+    assert "texto_reducen" not in d
+
+
+def test_wkt_lee_poligonos_huecos_y_colecciones():
+    from rotaciones import ssurgo
+    w = ("GEOMETRYCOLLECTION (POLYGON ((0 0, 1 0, 1 1, 0 1, 0 0)), LINESTRING (0 0, 1 1), "
+         "MULTIPOLYGON (((2 2, 3 2, 3 3, 2 2)), ((4 4, 5 4, 5 5, 4 4), (4.2 4.1, 4.3 4.1, 4.3 4.2, 4.2 4.1))))")
+    assert [len(p) for p in ssurgo._anillos_wkt(w)] == [1, 1, 2]
+    assert ssurgo._anillos_wkt("GEOMETRYCOLLECTION EMPTY") == []
+
+
+def test_mapa_de_suelos_une_poligonos_y_texturas(monkeypatch, tmp_path):
+    from rotaciones import ssurgo
+    monkeypatch.setattr(ssurgo, "CACHE", tmp_path)
+    enviado = {}
+    def pedir(q, timeout):
+        enviado["q"] = q
+        return {"Table": [["mukey", "wkt"], ["1", "POLYGON ((0 0, 1 0, 1 1, 0 1, 0 0))"], ["2", "POLYGON ((1 0, 2 0, 2 1, 1 1, 1 0))"]],
+                "Table1": [["mukey", "muname", "compname", "comppct_r", "texcl"],
+                           ["1", "Clarion loam", "Clarion", "90", "Loam"], ["2", "Water", None, None, None]]}
+    monkeypatch.setattr(ssurgo, "_pedir", pedir)
+    monkeypatch.setattr(ssurgo, "consultar", lambda lat, lon, usar_cache=True: {"mukey": "1"})
+    m = ssurgo.mapa(42.03, -93.63, usar_cache=False)
+    assert m["proporcion"] == {"franco": 0.5, "sin_dato": 0.5} and m["punto_mukey"] == "1"
+    assert "chtexture" in enviado["q"] and "mupolygon" in enviado["q"]
+    assert (tmp_path / "ssurgo_mapa_42.0300_-93.6300.json").is_file()
+
+
+def test_api_limita_region_y_oculta_docs():
+    from fastapi.testclient import TestClient
+    from rotaciones import api
+    c = TestClient(api.app)
+    assert c.get("/api/evaluar", params={"lat": 4.6, "lon": -74.1}).status_code == 422   # Bogotá
+    assert c.get("/api/suelo/mapa", params={"lat": 4.6, "lon": -74.1}).status_code == 422
+    assert c.get("/api/evaluar", params={"vio": "x" * 400}).status_code == 422
+    assert c.get("/docs").status_code == 404 and c.get("/openapi.json").status_code == 404
+    assert c.get("/..%2Frotaciones%2Fapi.json").status_code == 404
+
+
+def test_power_refresca_el_anio_en_curso_y_usa_lo_viejo_si_falla(tmp_path, monkeypatch):
+    import json as _json
+    from rotaciones import power
+    monkeypatch.setattr(power, "CACHE_TMP", tmp_path / "tmp")
+    viejo = tmp_path / "d_1_2_1981_20261101.json"
+    viejo.write_text(_json.dumps({"v": "viejo"}))
+    pedido = tmp_path / "d_1_2_1981_20261111.json"
+    llamadas = []
+    class R:
+        def __enter__(self): return self
+        def __exit__(self, *a): pass
+        def read(self): return _json.dumps({"v": "nuevo"}).encode()
+    def abrir(req, timeout): llamadas.append(1); return R()
+    monkeypatch.setattr(power.urllib.request, "urlopen", abrir)
+    assert power._leer_o_pedir("https://power.example/x", pedido, "d_1_2_1981_2026*.json") == {"v": "nuevo"}   # 10 días: refresca
+    assert power._leer_o_pedir("https://power.example/x", pedido, "d_1_2_1981_2026*.json") == {"v": "nuevo"} and len(llamadas) == 1
+    pedido2 = tmp_path / "d_1_2_1981_20261120.json"
+    monkeypatch.setattr(power.urllib.request, "urlopen", lambda *a, **k: (_ for _ in ()).throw(OSError("sin red")))
+    assert power._leer_o_pedir("https://power.example/x", pedido2, "d_1_2_1981_2026*.json") == {"v": "nuevo"}  # sin red: el último guardado

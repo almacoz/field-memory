@@ -1,0 +1,21 @@
+{
+  "fuente": "USDA NRCS Soil Data Access (SSURGO)",
+  "url": "https://sdmdataaccess.nrcs.usda.gov/",
+  "lat": 41.15,
+  "lon": -96.5,
+  "mukey": "1691444",
+  "simbolo_mapa": "8145",
+  "unidad_mapa": "Pohocco-Pahuk complex, 6 to 11 percent slopes, eroded",
+  "componente_dominante": "Pohocco",
+  "porcentaje_componente": "52",
+  "horizonte_superficial": {
+    "textura_original": "Silty clay loam",
+    "descripcion": "Silty clay loam",
+    "profundidad_cm": [
+      "0",
+      "15"
+    ]
+  },
+  "textura_modelo_aproximada": "franco_arcillo_limoso",
+  "advertencia": "Dato cartográfico de la unidad de suelo; no es una medición ni una descripción confirmada del lote."
+}

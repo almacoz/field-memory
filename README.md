@@ -153,10 +153,14 @@ refrescar, borrar de `cache/` los archivos del año en curso.
 2. Declarar el uso de IA en el formulario de envío (código asistido e ilustraciones con marca de agua).
 3. Decidir el año de referencia: 2026 provisional (actual) o 2025, el último completo.
 4. Sustituir supuestos de `data/cultivos.json` por valores con fuente, o mostrarlos como tales.
-5. Elegir licencia del código (no hay `LICENSE` todavía).
 
 ## No hacer
 
 No presentar niveles como probabilidad de infección. No rellenar umbrales sin fuente. No
 afirmar que la humedad satelital mide la salud del suelo de un lote. No añadir un LLM que
 redacte recomendaciones. No dar una recomendación única.
+
+## License
+
+Code: [MIT](LICENSE). Photos, AI-generated illustrations and data keep their own terms: see
+[CREDITS.md](CREDITS.md). Live app: https://field-memory.vercel.app/?idioma=en

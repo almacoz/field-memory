@@ -56,7 +56,7 @@ python -m pytest -q                                   # 46 pruebas, sin red
 uvicorn rotaciones.api:app --reload --host 127.0.0.1 --port 8000
 ```
 
-- Español: `http://127.0.0.1:8000/` · inglés (idioma de entrega): `?idioma=en` · demo guiada: `?demo=1`
+- El idioma sale del navegador (español → es; cualquier otro → inglés). Forzar: `?idioma=es` o `?idioma=en`. Demo guiada: `?demo=1`
 - Sin red, la página cae a `web/ejemplo_es.json` / `ejemplo_en.json` (datos sintéticos) y lo avisa en pantalla.
 - No hace falta `.env`: NASA POWER y SSURGO no piden clave. Variables opcionales en `.env.example`.
 

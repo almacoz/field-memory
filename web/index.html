@@ -8,6 +8,7 @@
 <meta name="description" content="Field Memory / Memoria del lote: compare crop rotations with 25+ years of NASA POWER climate data and USDA soil maps. Pilot for corn, soybean and wheat in the US Midwest.">
 <meta name="theme-color" content="#1F5135">
 <link rel="icon" href="/favicon.ico" sizes="any">
+<link rel="icon" type="image/svg+xml" href="/img/marca/icono.svg">
 <link rel="icon" type="image/png" sizes="32x32" href="/img/marca/favicon-32x32.png">
 <link rel="icon" type="image/png" sizes="16x16" href="/img/marca/favicon-16x16.png">
 <link rel="apple-touch-icon" href="/img/marca/apple-touch-icon.png">
@@ -63,7 +64,14 @@ button, select, input { font: inherit; color: inherit; }
 .top-in { max-width: 1180px; margin: 0 auto; padding: 0 20px; height: 64px; display: flex; align-items: center; gap: 20px; }
 .marca { display: flex; align-items: center; gap: 8px; font-weight: 700; letter-spacing: -0.01em; color: var(--tinta); text-decoration: none; white-space: nowrap; }
 .marca svg { color: var(--acento); }
-.marca-logo { width: 30px; height: auto; display: block; }
+.marca-logo { width: 32px; height: 32px; display: block; flex: none; }
+.marca { position: relative; }
+@media (max-width: 600px) {
+  .marca-ia { position: absolute; left: 21px; top: -5px; font-size: .5rem; padding: 0 3px; background: var(--panel); }
+  .alcance .pill { font-size: .8rem; }
+}
+.alcance .pill { text-wrap: balance; }
+.marca-ia { font-size: .62rem; font-weight: 700; letter-spacing: .06em; color: var(--tenue); border: 1px solid var(--borde-f); border-radius: 4px; padding: 1px 4px; line-height: 1.3; align-self: center; }
 .pasos { flex: 1; display: flex; justify-content: center; gap: 4px; list-style: none; margin: 0; padding: 0; }
 .pasos button { display: flex; align-items: center; gap: 8px; border: 0; background: none; padding: 8px 10px; border-radius: var(--r-s); cursor: pointer; color: var(--tenue); font-size: 0.9rem; font-weight: 500; white-space: nowrap; }
 .pasos button:disabled { cursor: default; opacity: 0.55; }
@@ -421,8 +429,9 @@ details.fuentes a { word-break: break-all; }
   <header class="top">
     <div class="top-in">
       <a class="marca" href="#" id="marca">
-        <img src="/img/marca/logo.webp" width="30" height="27" alt="" class="marca-logo" title="Logo generado con IA (ChatGPT) · AI-generated logo">
+        <img class="marca-logo" src="/img/marca/logo-icono.webp" width="32" height="32" alt="">
         <span data-t="marca">Memoria del lote</span>
+        <small class="marca-ia" data-t="iaMarca" title="Logo generado con IA · AI-generated logo">IA</small>
       </a>
       <ol class="pasos" id="pasos" aria-label="Pasos"></ol>
       <div class="top-acc">

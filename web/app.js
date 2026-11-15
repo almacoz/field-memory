@@ -18,6 +18,7 @@ const UI = {
     aniosCambia: "Qué cambia: solo la lluvia y el calor de ese año (NASA POWER).",
     aniosIgual: "Qué no cambia: el suelo, el cultivo y sus parámetros. Describe años pasados; no es un pronóstico.",
     diasSed: "{n} días con sed",
+    iaMarca: "IA",
     calcResponder: "¿Lo vio en su lote? Responda abajo y el nivel se ajusta",
     catTit: "Hongos y plagas que evaluamos", catMenu: "Hongos y plagas (con fotos)", catVer: "Ver los 5 con fotos",
     catAyuda: "Toque uno para ver la foto, dónde pasa el invierno y qué lo frena.",
@@ -143,6 +144,7 @@ const UI = {
     aniosCambia: "What changes: only that year's rain and heat (NASA POWER).",
     aniosIgual: "What stays the same: the soil, the crop and its parameters. It describes past years; it is not a forecast.",
     diasSed: "{n} thirsty days",
+    iaMarca: "AI",
     calcResponder: "Did you see it in your field? Answer below and the level adjusts",
     catTit: "Fungi and pests we assess", catMenu: "Fungi and pests (with photos)", catVer: "See all 5 with photos",
     catAyuda: "Tap one to see the photo, where it spends the winter and what stops it.",
@@ -1385,7 +1387,7 @@ function abrirMenu() {
   const t = T();
   const idiomaSeg = el("div", { class: "seg", role: "group", "aria-label": t.menuIdioma },
     [["es", "Español"], ["en", "English"]].map(([k, txt]) => el("button", { type: "button", "aria-pressed": String(S.idioma === k), text: txt,
-      onclick: async () => { if (S.idioma === k) return; S.idioma = k; cerrarLateral(); render(); if (S.vista) await consultar(); } })));
+      onclick: async () => { if (S.idioma === k) return; S.idioma = k; try { localStorage.setItem("idioma", k); } catch (_) {} cerrarLateral(); render(); if (S.vista) await consultar(); } })));
   abrirLateral(t.menu,
     el("div", { style: "display:grid; gap:8px" }, el("p", { class: "eyebrow", text: t.menuIdioma }), idiomaSeg),
     el("div", { class: "menu-lista" },
@@ -1465,7 +1467,15 @@ $("#btn-demo").onclick = iniciarDemo;
 
 /* =================== Inicio =================== */
 const params = new URLSearchParams(location.search);
-if (params.get("idioma") === "en") S.idioma = "en";
+// Idioma: 1) ?idioma= o ?lang= en la URL, 2) lo que la persona eligió antes, 3) el idioma del
+// navegador (español → es; cualquier otro → en, porque el proyecto se entrega en inglés).
+S.idioma = (() => {
+  const url = (params.get("idioma") || params.get("lang") || "").slice(0, 2).toLowerCase();
+  if (url === "es" || url === "en") return url;
+  try { const g = localStorage.getItem("idioma"); if (g === "es" || g === "en") return g; } catch (_) {}
+  const nav = (navigator.languages && navigator.languages.length ? navigator.languages : [navigator.language || "en"]);
+  return String(nav[0] || "en").toLowerCase().startsWith("es") ? "es" : "en";
+})();
 history.replaceState({ paso: 0 }, "", location.search + "#");
 render();
 if (params.get("demo") === "1") iniciarDemo();

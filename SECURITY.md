@@ -11,7 +11,8 @@ Antes de publicarlo en internet, aplicar la sección "Si se publica".
 - Entradas del usuario: coordenadas, rotación actual, textura de suelo, labranza, idioma y
   respuestas sí/no ("¿vio…?"). No se guardan; no hay cookies, `localStorage` ni analítica.
 - Salidas a terceros: **solo coordenadas**, hacia NASA POWER (`power.larc.nasa.gov`) y
-  USDA Soil Data Access (`sdmdataaccess.sc.egov.usda.gov`). Ninguno pide clave.
+  USDA Soil Data Access (`sdmdataaccess.sc.egov.usda.gov`). Ninguno pide clave. Si la persona toca
+  "Ver en vista satelital", el navegador abre Google Maps con esas coordenadas (solo con ese clic).
 - En disco: respuestas de esas APIs en `cache/` (clima y suelo por coordenada).
 
 ## Revisión hecha (15-nov-2026)

@@ -271,3 +271,4 @@ de su lote, solo eligió una zona. Ahora:
 - Logo: se sacó de la portada; va en la barra superior (sin lema) con etiqueta "IA". En celular la etiqueta queda en la esquina del logo. Favicon: brote propio.
 - Idioma automático: `?idioma=`/`?lang=` en la URL, si no la última elección guardada, si no el idioma del navegador (español → es; cualquier otro → en).
 - Licencia MIT para el código (`LICENSE`), con la aclaración de que fotos, ilustraciones IA y datos conservan sus propios términos.
+- Enlace del mapa de suelos: de OpenStreetMap (abría en zoom 10) a Google Maps en vista satelital (zoom cercano, se ven los campos).
